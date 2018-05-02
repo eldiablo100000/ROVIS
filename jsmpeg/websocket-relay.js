@@ -4,11 +4,15 @@
 // node websocket-relay yoursecret 8081 8082
 // ffmpeg -i <some input> -f mpegts http://localhost:8081/yoursecret
 
-var fs = require('fs'),
-	http = require('http'),
-	WebSocket = require('ws');
+var fs = require('fs');
+var	http = require('http');
+var	WebSocket = require('ws');
 var express = require('express');
+var bodyParser = require('body-parser');
+var routes = require('routes/index.js');
 var app = express();
+
+
 if (process.argv.length < 3) {
 	console.log(
 		'Usage: \n' +
@@ -23,6 +27,16 @@ var STREAM_SECRET = process.argv[2],
 	HTML_PORT = process.argv[5] || 8083,
 	RECORD_STREAM = false;
 
+
+
+	//  Connect all our routes to our application
+app.use('/', routes);
+
+// Turn on that server!
+app.listen(HTML_PORT, () => {
+  console.log('App listening on port '+HTML_PORT);
+});
+// Routes
 // Websocket Server
 var socketServer = new WebSocket.Server({port: WEBSOCKET_PORT, perMessageDeflate: false});
 socketServer.connectionCount = 0;
@@ -88,7 +102,7 @@ var streamServer = http.createServer( function(request, response) {
 }).listen(STREAM_PORT);
 
 app.get('/', function(req, res) {
-	res.sendFile('./index.html' , { root : __dirname});
+	res.sendFile('public/index.html' , { root : __dirname});
 });
 app.listen(HTML_PORT);
 console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');

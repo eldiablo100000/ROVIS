@@ -101,10 +101,6 @@ var streamServer = http.createServer( function(request, response) {
 	}
 }).listen(STREAM_PORT);
 
-app.get('/', function(req, res) {
-	res.sendFile('public/index.html' , { root : __dirname});
-});
-app.listen(HTML_PORT);
 console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');
 console.log('Awaiting WebSocket connections on ws://127.0.0.1:'+WEBSOCKET_PORT+'/');
 console.log('Listening for incomming HTTP-Requests on http://127.0.0.1:'+HTML_PORT+'/');

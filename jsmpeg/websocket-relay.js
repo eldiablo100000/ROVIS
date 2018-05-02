@@ -7,7 +7,8 @@
 var fs = require('fs'),
 	http = require('http'),
 	WebSocket = require('ws');
-
+var express = require('express');
+var app = express();
 if (process.argv.length < 3) {
 	console.log(
 		'Usage: \n' +
@@ -86,10 +87,10 @@ var streamServer = http.createServer( function(request, response) {
 	}
 }).listen(STREAM_PORT);
 
- 
-var htmlServer = http.createServer(function (req, res) {
-	res.sendFile('./index.html' , { root : __dirname});
-  }).listen(HTML_PORT);   
+app.get('/', function(req, res) {
+	res.sendFile('./index.html');
+});
+app.listen(HTML_PORT);
 console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');
 console.log('Awaiting WebSocket connections on ws://127.0.0.1:'+WEBSOCKET_PORT+'/');
 console.log('Listening for incomming HTTP-Requests on http://127.0.0.1:'+HTML_PORT+'/');

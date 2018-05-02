@@ -2,7 +2,7 @@ const routes = require('express').Router();
 
 routes.get('/', (req, res) => {
 //   res.status(200).json({ message: 'Connected!' });
-  res.sendFile('public/index.html',{root: __dirname});
+  res.sendFile('public/ex3-1.html',{root: __dirname});
 });
 routes.get('/position', (req, res) => {
     res.status(200).json({ message: 'position' });

@@ -11,8 +11,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var routes = require('./routes.js');
 var app = express();
-
-
+app.use("/public", express.static(__dirname + "/public"));
 if (process.argv.length < 3) {
 	console.log(
 		'Usage: \n' +
@@ -29,13 +28,9 @@ var STREAM_SECRET = process.argv[2],
 
 
 
-	//  Connect all our routes to our application
-app.use('/', routes);
 
-// Turn on that server!
-app.listen(HTML_PORT, () => {
-  console.log('App listening on port '+HTML_PORT);
-});
+
+
 // Routes
 // Websocket Server
 var socketServer = new WebSocket.Server({port: WEBSOCKET_PORT, perMessageDeflate: false});
@@ -101,6 +96,12 @@ var streamServer = http.createServer( function(request, response) {
 	}
 }).listen(STREAM_PORT);
 
+app.use('/', routes);
+
+// Turn on that server!
+app.listen(HTML_PORT, () => {
+console.log('App listening on port '+HTML_PORT);
+});
 console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');
 console.log('Awaiting WebSocket connections on ws://127.0.0.1:'+WEBSOCKET_PORT+'/');
 console.log('Listening for incomming HTTP-Requests on http://127.0.0.1:'+HTML_PORT+'/');

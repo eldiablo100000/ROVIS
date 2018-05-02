@@ -88,7 +88,7 @@ var streamServer = http.createServer( function(request, response) {
 }).listen(STREAM_PORT);
 
 app.get('/', function(req, res) {
-	res.sendFile('./index.html');
+	res.sendFile('./index.html' , { root : __dirname});
 });
 app.listen(HTML_PORT);
 console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');

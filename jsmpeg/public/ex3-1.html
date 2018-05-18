@@ -3,97 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>HTML5 Navigation Bar Example - Example 1</title>
-    <style type="text/css">
-    html, body {
-  background-color: #111;
-  text-align: center;
-}
-    #logo{
-    position: absolute;
-    right:10px;
-    bottom: 10px;
-}
-body{
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
-    font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
-}
-nav {
-    background-color: #333;
-    border: 1px solid #333;
-    color: #fff;
-    display: block;
-    margin: 0;
-    overflow: hidden;
-}
-nav ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-nav ul li {
-    margin: 0;
-    display: inline-block;
-    list-style-type: none;
-    transition: all 0.2s;
-}
-
-nav > ul > li > a {
-    color: #aaa;
-    display: block;
-    line-height: 2em;
-    padding: 0.5em 2em;
-    text-decoration: none;
-
-}
-
-nav li > ul{
-    display : none;
-    margin-top:1px;
-    background-color: #bbb;
-
-}
-
-nav li > ul li{
-    display: block;
-}
-
-nav  li > ul li a {
-    color: #111;
-    display: block;
-    line-height: 2em;
-    padding: 0.5em 2em;
-    text-decoration: none;
-}
-
-nav li:hover {
-    background-color: #666;
-}
-nav li:hover > ul{
-    position:absolute;
-    display : block;
-}
-nav li > ul > li ul  {
-    display: none;
-    background-color: #888;
-}
-nav li > ul > li:hover > ul  {
-    position:absolute;
-    display : block;
-    margin-left:100%;
-    margin-top:-3em;
-}
-
-nav ul > li.sub{
-    background: url(ic_keyboard_arrow_down_white_18dp.png) right center no-repeat;
-}
-
-nav ul > li.sub li.sub{
-    background: url(ic_keyboard_arrow_right_white_18dp.png) right center no-repeat;
-}
-
-</style>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
 </head>
 <body>
 <nav>
@@ -167,12 +77,20 @@ nav ul > li.sub li.sub{
     </ul>
 </nav>
 <canvas id="video-canvas"></canvas>
-<script type="text/javascript" src="public/jsmpeg.min.js"></script>
-<script type="text/javascript">
-    var canvas = document.getElementById('video-canvas');
-    var url = 'ws://'+document.location.hostname+':8082/';
-    var player = new JSMpeg.Player(url, {canvas: canvas});
-</script>
+
+<div id="controls">
+    <button id="keyboard_key_up"><img src="public/img/keyboard_key_up.png"/></button>
+    <button id="keyboard_key_left"><img src="public/img/keyboard_key_left.png" /></button>
+    <button id="keyboard_key_down"><img src="public/img/keyboard_key_down.png" /></button>
+    <button id="keyboard_key_right"><img src="public/img/keyboard_key_right.png" /></button>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/jsmpeg.min.js"></script>
+<script type="text/javascript" src="public/js/canvas.js"></script>
+<script type="text/javascript" src="public/js/arrow.js"></script>
+
 <img id="logo" src="../../WebCodeGeeks-watermark.png" />
 </body>
 </html>

@@ -3,14 +3,15 @@
 // Example:
 // node websocket-relay yoursecret 8081 8082
 // ffmpeg -i <some input> -f mpegts http://localhost:8081/yoursecret
-
-var fs = require('fs');
+var fs = require('graceful-fs');
 var	http = require('http');
 var	WebSocket = require('ws');
 var express = require('express');
 var bodyParser = require('body-parser');
 var routes = require('./routes.js');
 var app = express();
+var PythonShell = require('python-shell');
+ 
 app.use("/public", express.static(__dirname + "/public"));
 if (process.argv.length < 3) {
 	console.log(
@@ -105,3 +106,14 @@ console.log('App listening on port '+HTML_PORT);
 console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');
 console.log('Awaiting WebSocket connections on ws://127.0.0.1:'+WEBSOCKET_PORT+'/');
 console.log('Listening for incomming HTTP-Requests on http://127.0.0.1:'+HTML_PORT+'/');
+PythonShell.run('AMSpi/dc_example.py', null, function (err) {
+  if (err) throw err;
+  console.log('finished');
+});
+
+//Gpio = require('onoff').Gpio;
+
+//while(1) {
+//	led = new Gpio(17, 'out');
+//	led.writeSync(1);
+//}

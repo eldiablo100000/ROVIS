@@ -17,13 +17,14 @@ $(document).ready(function(){
 	        	$("#keyboard_key_up").css("background","green");    	
 				console.log("up");
 				if(first==0) {
+					first++;
+					console.log("go")
 		        	$.get("/go", function(data, status){
-		        	
+		        		console.log("go inviato con successo");
 	        		    //console.log("Data: " + data + "\nStatus: " + status);
 	        		    
 	            	});
             	}
-            	else first++;
 	        	break;
 
 	        case 39: // right
@@ -52,6 +53,7 @@ $(document).ready(function(){
 	        	$.get("/stopGo", function(data, status){
         		    //console.log("Data: " + data + "\nStatus: " + status);
         		    first=0;
+        		    console.log("stopGo inviato con successo");
                });	
 	        	break;
 

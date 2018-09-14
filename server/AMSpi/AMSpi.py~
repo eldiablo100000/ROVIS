@@ -68,7 +68,7 @@ class AMSpi:
 
         :param bool use_board: True if GPIO.BOARD numbering will be used
         """
-        GPIO.setwarnings(False)
+        #GPIO.setwarnings(False)
         if use_board:
             GPIO.setmode(GPIO.BOARD)
             print("PIN numbering: BOARD")
@@ -82,9 +82,9 @@ class AMSpi:
     def __exit__(self, exc_type, exc_val, exc_tb):
         try:
             if self._test_shift_pins():
-                self._shift_write(0)
+                #self._shift_write(0)
                 self.stop_dc_motors([self.DC_Motor_1, self.DC_Motor_2, self.DC_Motor_3, self.DC_Motor_4])
-            GPIO.cleanup()
+            #GPIO.cleanup()
         except RuntimeWarning:
             return True
 

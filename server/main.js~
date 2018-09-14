@@ -99,10 +99,15 @@ var streamServer = http.createServer( function(request, response) {
 
 app.use('/', routes);
 
-PythonShell.run('AMSpi/dc_example.py', null, function (err) {
+/*PythonShell.run('AMSpi/dc_example.py', null, function (err) {
   		if (err) throw err;
   			console.log('finished');
-	});
+	});*/
+
+PythonShell.run('AMSpi/init.py', null, function (err) {
+  		if (err) throw err;
+  			console.log('pin inizializzati');
+    	});
 
 // Turn on that server!
 app.listen(HTML_PORT, () => {

@@ -24,7 +24,7 @@ if __name__ == '__main__':
         if c == "go":
             print("GO: clockwise")
             amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
-            time.sleep(1)
+            time.sleep(10)
             #while True:
             	#amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
             	#time.sleep(1)
@@ -32,7 +32,8 @@ if __name__ == '__main__':
             
         if c == "stopGo":
             print("Stop")
-            #amspi.stop_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+            amspi.stop_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+            time.sleep(5)
             
 
 

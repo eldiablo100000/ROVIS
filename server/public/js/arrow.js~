@@ -17,13 +17,13 @@ $(document).ready(function(){
 	        	$("#keyboard_key_up").css("background","green");    	
 				console.log("up");
 				if(first==0) {
+					first++;
 		        	$.get("/go", function(data, status){
-		        	
+		        		console.log("go inviato");
 	        		    //console.log("Data: " + data + "\nStatus: " + status);
 	        		    
 	            	});
             	}
-            	else first++;
 	        	break;
 
 	        case 39: // right
@@ -50,8 +50,9 @@ $(document).ready(function(){
 	        	$("#keyboard_key_up").css("background","white");
 	        	console.log("stopGo");
 	        	$.get("/stopGo", function(data, status){
-        		    console.log("Data: " + data + "\nStatus: " + status);
+        		    //console.log("Data: " + data + "\nStatus: " + status);
         		    first=0;
+        		    console.log("stopGo inviato con successo");
                });	
 	        	break;
 

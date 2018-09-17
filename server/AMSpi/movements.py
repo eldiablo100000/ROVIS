@@ -24,11 +24,15 @@ if __name__ == '__main__':
 		# Set PINs for controlling all 4 motors (GPIO numbering)
 		amspi.set_L293D_pins(5, 6, 13, 19)
 		if c=="go":
-	    		print("GO: clockwise")
-	    		amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
-	    		time.sleep(10)
+			print("GO: clockwise")
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+			time.sleep(10)
+		if c=="goBack":
+			print("GO: counterclockwise")
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4], clockwise=False)
+			time.sleep(10)
 	except KeyboardInterrupt:
-		print("lol")
+		print("ERRORE KEYBOARD")
 		#dovrebbe andare dentro al try in caso.
         #se si attiva questo if, non funzionano più le cose. SI accellera per qualche secodo e poi ci si ferma
         #if c=="stopGo":

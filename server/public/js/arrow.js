@@ -35,6 +35,15 @@ $(document).ready(function(){
 	        case 40: // down
 	        	$("#keyboard_key_down").css("background","green");
 	        	console.log("down");
+	        	if(first==0) {
+					first++;
+					console.log("goBack")
+		        	$.get("/goBack", function(data, status){
+		        		console.log("goBack inviato con successo");
+	        		    //console.log("Data: " + data + "\nStatus: " + status);
+	        		    
+	            	});
+            	}
 	        	break;
 
 	        default: return; // exit this handler for other keys
@@ -63,6 +72,12 @@ $(document).ready(function(){
 
 	        case 40: // down
 	        	$("#keyboard_key_down").css("background","white");
+	        	console.log("stopGo");
+	        	$.get("/stopGo", function(data, status){
+        		    //console.log("Data: " + data + "\nStatus: " + status);
+        		    first=0;
+        		    console.log("stopGo inviato con successo");
+               });
 	        	break;
 
 	        default: return; // exit this handler for other keys

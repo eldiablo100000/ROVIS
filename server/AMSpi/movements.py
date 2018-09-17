@@ -11,29 +11,33 @@ from AMSpi import AMSpi
 import time
 import sys
 
+
+
 if __name__ == '__main__':
     # Calling AMSpi() we will use default pin numbering: BCM (use GPIO numbers)
     # if you want to use BOARD numbering do this: "with AMSpi(True) as amspi:"
     with AMSpi() as amspi:
-
-        # Set PINs for controlling shift register (GPIO numbering)
-        amspi.set_74HC595_pins(21, 20, 16)
-        # Set PINs for controlling all 4 motors (GPIO numbering)
-        amspi.set_L293D_pins(5, 6, 13, 19)
-        c = sys.argv[1]
-        if c == "go":
-            print("GO: clockwise")
-            amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
-            time.sleep(10)
-            #while True:
-            	#amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
-            	#time.sleep(1)
-            	
+    	try:
+		c=sys.argv[1]
+		# Set PINs for controlling shift register (GPIO numbering)
+		amspi.set_74HC595_pins(21, 20, 16)
+		# Set PINs for controlling all 4 motors (GPIO numbering)
+		amspi.set_L293D_pins(5, 6, 13, 19)
+		if c=="go":
+	    		print("GO: clockwise")
+	    		amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+	    		time.sleep(10)
+	except KeyboardInterrupt:
+		print("lol")
+		#dovrebbe andare dentro al try in caso.
+        #se si attiva questo if, non funzionano più le cose. SI accellera per qualche secodo e poi ci si ferma
+        #if c=="stopGo":
+        	#print("Stop")
+        	#amspi.stop_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+        	#time.sleep(5)
+	
+        
             
-        if c == "stopGo":
-            print("Stop")
-            amspi.stop_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
-            time.sleep(5)
             
 
 

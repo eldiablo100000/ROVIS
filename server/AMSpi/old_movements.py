@@ -20,12 +20,20 @@ if __name__ == '__main__':
         amspi.set_74HC595_pins(21, 20, 16)
         # Set PINs for controlling all 4 motors (GPIO numbering)
         amspi.set_L293D_pins(5, 6, 13, 19)
-        
-        
-        print("GO: clockwise")
-        amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
-        time.sleep(10)
+        c = sys.argv[1]
+        if c == "go":
+            print("GO: clockwise")
+            amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+            time.sleep(10)
+            #while True:
+            	#amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+            	#time.sleep(1)
+            	
             
+        if c == "stopGo":
+            print("Stop")
+            amspi.stop_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
+            time.sleep(5)
             
 
 

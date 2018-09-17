@@ -12,17 +12,15 @@ routes.get('/', (req, res) => {
 });
 routes.get('/go', (req, res) => {
   res.status(200).json({ message: 'Go!' });
-  //go("go");
-  prova();
+  go("go");
 });
 routes.get('/stopGo', (req, res) => {
   res.status(200).json({ message: 'stopGo!' });
-  //go("stopGo");
-  provaStop();
-});
+  go("stopGo");
+  });
 
 
-function go(command) {
+/*function go(command) {
 		var PythonShell = require('python-shell');
 		let options = {
   			mode: 'text',
@@ -38,23 +36,30 @@ function go(command) {
   		if (err) throw err;
   			console.log('finished');
     	});
-}
+}*/
 
 var python_process;
-function prova() {
+function go(command) {
+		if(command=="stopGo") {
+			//NON VIENE CHIAMATA LA STOP MOTORS, VIENE SOLO UCCISO IL PROCESSO
+			python_process.kill('SIGINT');	
+		}
+		let options = {
+  			mode: 'text',
+  			pythonOptions: ['-u'], // get print results in real-time
+  			args: [command]
+		};
 	    var PythonShell = require('python-shell');
-	    var pyshell = new PythonShell('AMSpi/movements2.py');
-	
+	    var pyshell = new PythonShell('AMSpi/movements2.py',options);
+	    
+		
 	    pyshell.end(function (err) {
 	        if (err) {
-	            //console.log(err);
+	            console.log(err);
 	        }
 	    });
 	    python_process = pyshell.childProcess;
 }
-	   
-function provaStop() {
-	python_process.kill('SIGINT');
-}	
-
+	   	
+//IMPORTANTE, STARE ATTENTI A NON CANCELLARE
 module.exports = routes;

@@ -1,0 +1,42 @@
+/*#controls {
+    position: relative;
+    bottom: 130px;
+    margin: 0 auto;
+}*/
+
+#keyboard_key_up {
+    position: absolute;
+    right:300px;
+    bottom: 500px;
+    border-style: solid;
+    border-color: black;
+    background: white;
+   
+}
+
+#keyboard_key_left {
+    position: absolute;
+    right:575px;
+    bottom: 250px;
+    border-style: solid;
+    border-color: black;
+    
+}
+
+#keyboard_key_down {
+    position: absolute;
+    right:300px;
+    bottom: 250px;
+    border-style: solid;
+    border-color: black;
+   
+}
+
+#keyboard_key_right {
+    position: absolute;
+    right:25px;
+    bottom: 250px;
+    border-style: solid;
+    border-color: black;
+   
+}

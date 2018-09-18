@@ -92,43 +92,37 @@ nav ul > li.sub li.sub{
     left: 10px;
 }
 
-/*#controls {
-    position: relative;
-}*/
+#wrapper {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+#controls {
+  display: inline-grid;
+  grid-column-gap: 0;
+  align-self: end;
+  padding-bottom: 10vh;
+}
+
+button {
+  border: solid 1px black;
+}
+
+button img {
+    height: 10vh;
+}
 
 #keyboard_key_up {
-    position: absolute;
-    right:300px;
-    bottom: 500px;
-    border-style: solid;
-    border-color: black;
-    background: white;z
-   
+  grid-column-start: 2;
 }
 
 #keyboard_key_left {
-    position: absolute;
-    right:575px;
-    bottom: 250px;
-    border-style: solid;
-    border-color: black;
-    
+  grid-column-start: 1;
 }
 
-#keyboard_key_down {
-    position: absolute;
-    right:300px;
-    bottom: 250px;
-    border-style: solid;
-    border-color: black;
-   
-}
+#keyboard_key_down {}
 
 #keyboard_key_right {
-    position: absolute;
-    right:25px;
-    bottom: 250px;
-    border-style: solid;
-    border-color: black;
-   
+  grid-column-start: 3;
 }

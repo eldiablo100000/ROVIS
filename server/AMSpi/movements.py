@@ -19,6 +19,7 @@ if __name__ == '__main__':
     with AMSpi() as amspi:
     	try:
 		c=sys.argv[1]
+		go_time=10
 		# Set PINs for controlling shift register (GPIO numbering)
 		amspi.set_74HC595_pins(21, 20, 16)
 		# Set PINs for controlling all 4 motors (GPIO numbering)
@@ -26,11 +27,21 @@ if __name__ == '__main__':
 		if c=="go":
 			print("GO: clockwise")
 			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])
-			time.sleep(10)
+			time.sleep(go_time)
 		if c=="goBack":
 			print("GO: counterclockwise")
 			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4], clockwise=False)
-			time.sleep(10)
+			time.sleep(go_time)
+		if c=="goLeft":
+			print("Turn left")
+        	amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3], clockwise=False)
+        	amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4])
+        	time.sleep(go_time)	
+        if c=="goRight":
+			print("Turn right")
+        	amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3])
+        	amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4], clockwise=False)
+        	time.sleep(go_time)
 	except KeyboardInterrupt:
 		print("ERRORE KEYBOARD")
 		#dovrebbe andare dentro al try in caso.

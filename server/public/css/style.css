@@ -92,13 +92,17 @@ nav ul > li.sub li.sub{
     left: 10px;
 }
 
+/*#controls {
+    position: relative;
+}*/
+
 #keyboard_key_up {
     position: absolute;
     right:300px;
     bottom: 500px;
     border-style: solid;
     border-color: black;
-    background: white;
+    background: white;z
    
 }
 

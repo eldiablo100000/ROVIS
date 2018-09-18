@@ -11,6 +11,15 @@ $(document).ready(function(){
 	        case 37: // left
 	        	$("#keyboard_key_left").css("background","green");
 	        	console.log("left");
+	        	if(first==0) {
+					first++;
+					console.log("goLeft")
+		        	$.get("/goLeft", function(data, status){
+		        		console.log("goLeft inviato con successo");
+	        		    //console.log("Data: " + data + "\nStatus: " + status);
+	        		    
+	            	});
+            	}
 	        	break;
 
 	        case 38: // up
@@ -30,6 +39,15 @@ $(document).ready(function(){
 	        case 39: // right
 	        	$("#keyboard_key_right").css("background","green");
 	        	console.log("right");
+	        	if(first==0) {
+					first++;
+					console.log("goRight")
+		        	$.get("/goRight", function(data, status){
+		        		console.log("goRight inviato con successo");
+	        		    //console.log("Data: " + data + "\nStatus: " + status);
+	        		    
+	            	});
+            	}
 	        	break;
 
 	        case 40: // down
@@ -54,6 +72,12 @@ $(document).ready(function(){
 	    switch(e.which) {
 	        case 37: // left
 	        	$("#keyboard_key_left").css("background","white");
+	        	console.log("stopGo");
+	        	$.get("/stopGo", function(data, status){
+        		    //console.log("Data: " + data + "\nStatus: " + status);
+        		    first=0;
+        		    console.log("stopGo (goLeft) inviato con successo");
+               	});	
 	        	break;
 
 	        case 38: // up
@@ -62,12 +86,18 @@ $(document).ready(function(){
 	        	$.get("/stopGo", function(data, status){
         		    //console.log("Data: " + data + "\nStatus: " + status);
         		    first=0;
-        		    console.log("stopGo inviato con successo");
-               });	
+        		    console.log("stopGo (go) inviato con successo");
+               	});	
 	        	break;
 
 	        case 39: // right
 	        	$("#keyboard_key_right").css("background","white");
+	        	console.log("stopGo");
+	        	$.get("/stopGo", function(data, status){
+        		    //console.log("Data: " + data + "\nStatus: " + status);
+        		    first=0;
+        		    console.log("stopGo (goRight) inviato con successo");
+               	});	
 	        	break;
 
 	        case 40: // down
@@ -76,8 +106,8 @@ $(document).ready(function(){
 	        	$.get("/stopGo", function(data, status){
         		    //console.log("Data: " + data + "\nStatus: " + status);
         		    first=0;
-        		    console.log("stopGo inviato con successo");
-               });
+        		    console.log("stopGo (goBack) inviato con successo");
+               	});
 	        	break;
 
 	        default: return; // exit this handler for other keys

@@ -17,11 +17,19 @@ routes.get('/go', (req, res) => {
 routes.get('/stopGo', (req, res) => {
   res.status(200).json({ message: 'stopGo!' });
   go("stopGo");
-  });
+});
 routes.get('/goBack', (req, res) => {
   res.status(200).json({ message: 'goBack!' });
   go("goBack");
-  });
+});
+routes.get('/goLeft', (req, res) => {
+  res.status(200).json({ message: 'goLeft!' });
+  go("goLeft");
+});
+routes.get('/goRight', (req, res) => {
+  res.status(200).json({ message: 'goRight!' });
+  go("goRight");
+});
 
 
 /*function go(command) {

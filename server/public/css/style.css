@@ -104,29 +104,50 @@ nav ul > li.sub li.sub{
 }
 
 #controls {
-  
+	padding-top: 2vh;
 }
 
 button {
-  border: solid 1px black;
+  border: solid 10% black;
 }
 
 button img {
-    
+   max-width: 9vw;
+   height: auto;
 }
 
 #keyboard_key_up {
-  
+  	display: block;
+  	margin-left: auto;
+    margin-right: auto;
 }
 
 #keyboard_key_left {
-  
+  	
 }
 
 #keyboard_key_down {
-
+	
 }
 
 #keyboard_key_right {
-  
+  	
 }
+
+.others {
+	margin-top: 1vh;
+}
+
+
+@media screen and (orientation:portrait) {
+	#video-canvas {
+    	max-height: 45vh;
+	}
+}
+
+@media screen and (orientation:landscape) {
+   	#video-canvas {
+    	max-width: 50vw;
+	}
+}
+

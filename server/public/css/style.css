@@ -97,8 +97,7 @@ nav ul > li.sub li.sub{
 
 #controls-container {
     display: block;
-    height: 45vh;
-    max-height: 23vmax ;
+    height: 40vh;
     background: red;
 
 }
@@ -112,7 +111,7 @@ button {
 }
 
 button img {
-   max-width: 9vw;
+   max-width: 6vw;
    height: auto;
 }
 
@@ -143,11 +142,18 @@ button img {
 	#video-canvas {
     	max-height: 45vh;
 	}
+	button img {
+		max-width: 10vw;
+	}
+	#controls-container {
+		max-height: 20vh; 	
+	}
 }
 
 @media screen and (orientation:landscape) {
    	#video-canvas {
     	max-width: 50vw;
 	}
+	
 }
 

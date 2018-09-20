@@ -34,14 +34,14 @@ if __name__ == '__main__':
 			time.sleep(go_time)
 		if c=="goLeft":
 			print("Turn left")
-        	amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3], clockwise=False)
-        	amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4])
-        	time.sleep(go_time)	
-        if c=="goRight":
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3], clockwise=False)
+			amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4])
+			time.sleep(go_time)	
+		if c=="goRight":
 			print("Turn right")
-        	amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3])
-        	amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4], clockwise=False)
-        	time.sleep(go_time)
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3])
+			amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4], clockwise=False)
+			time.sleep(go_time)
 	except KeyboardInterrupt:
 		print("ERRORE KEYBOARD")
 		#dovrebbe andare dentro al try in caso.

@@ -1,6 +1,7 @@
 
 
 const routes = require('express').Router();
+const { exec } = require('child_process');
 
 
 
@@ -29,6 +30,19 @@ routes.get('/goLeft', (req, res) => {
 routes.get('/goRight', (req, res) => {
   res.status(200).json({ message: 'goRight!' });
   go("goRight");
+});
+
+routes.get('/startStream', (req, res) => {
+  res.status(200).json({ message: 'streaming siiii!' });
+  streaming(true);
+});
+routes.get('/stopStream', (req, res) => {
+  res.status(200).json({ message: 'streaming noooo!' });
+  streaming(false);
+});
+routes.get('/getScreen', (req, res) => {
+  res.status(200).json({ message: 'screenshoooooot!' });
+  //screenshot();
 });
 
 
@@ -71,6 +85,31 @@ function go(command) {
 	        }
 	    });
 	    python_process = pyshell.childProcess;
+}
+function streaming(bool) {
+		if(bool){
+			console.log("yes");
+			exec('ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 -f mpegts -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 http://localhost:8081/ciao', (error, stdout, stderr) => {
+			  if (error) {
+			    console.error(`exec error: ${error}`);
+			    return;
+			  }
+			  console.log(`stdout: ${stdout}`);
+			  console.log(`stderr: ${stderr}`);
+			});
+
+		}
+		else {
+			exec('pkill ffmpeg', (error, stdout, stderr) => {
+			  if (error) {
+			    console.error(`exec error: ${error}`);
+			    return;
+			  }
+			  console.log(`stdout: ${stdout}`);
+			  console.log(`stderr: ${stderr}`);
+			});
+
+		}
 }
 	   	
 //IMPORTANTE, STARE ATTENTI A NON CANCELLARE

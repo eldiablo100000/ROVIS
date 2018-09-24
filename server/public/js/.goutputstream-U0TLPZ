@@ -1,23 +1,22 @@
 var first=0;
-var VELOCITA=100; //FISSA PER IL MOMENTO
 $(document).ready(function(){
-	
+	var VELOCITA = "100%";
 	//FUNZIONI PER IL CLICK DEI TASTI DA TESTARE. 
 	//NOTARE CHE SE SI PASSA IL MOUSE SOPRA UN TASTO SENZA AVER CLICCATO, PARTE COMUNQUE LA STOPGO
 	$('button').on('mousedown', function(e) {
     	//$(this).css("background","green");
     	switch($(this).attr("id")) {
     	/*	case "keyboard_key_left":
-    			goLeft(VELOCITA);
+    			goLeft();
     			break;
     		case "keyboard_key_up":
-    			go(VELOCITA);
+    			go();
     			break;
     		case "keyboard_key_right":
-    			goRight(VELOCITA);
+    			goRight();
     			break;
     		case "keyboard_key_down":
-    			goBack(VELOCITA);
+    			goBack();
     			break;
     	*/	case "start":
     			startStreaming();
@@ -46,25 +45,25 @@ $(document).ready(function(){
 	        case 37: // left
 	        	$("#keyboard_key_left").css("background","green");
 	        	console.log("left");
-	        	goLeft(VELOCITA);
+	        	goLeft();
 	        	break;
 
 	        case 38: // up
 	        	$("#keyboard_key_up").css("background","green");    	
 				console.log("up");
-				go(VELOCITA);
+				go();
 	        	break;
 
 	        case 39: // right
 	        	$("#keyboard_key_right").css("background","green");
 	        	console.log("right");
-	        	goRight(VELOCITA);
+	        	goRight();
 	        	break;
 
 	        case 40: // down
 	        	$("#keyboard_key_down").css("background","green");
 	        	console.log("down");
-	        	goBack(VELOCITA);
+	        	goBack();
 	        	break;
 
 	        default: 
@@ -120,44 +119,44 @@ function sleep(milliseconds) {
 }
 
 
-function goLeft(vel) {
+function goLeft() {
 	if(first==0) {
 		first++;
 		console.log("goLeft")
-    	$.get("/goLeft", {vel}, function(data, status){
+    	$.get("/goLeft", function(data, status){
     		console.log("goLeft inviato con successo");
 		    //console.log("Data: " + data + "\nStatus: " + status);
 		    
     	});
 	}
 }
-function go(vel) {
+function go() {
 	if(first==0) {
 		first++;
 		console.log("go")
-    	$.get("/go", {vel},function(data, status){
+    	$.get("/go", function(data, status){
     		console.log("go inviato con successo");
 		    //console.log("Data: " + data + "\nStatus: " + status);
 		    
     	});
 	}
 }
-function goRight(vel) {
+function goRight() {
 	if(first==0) {
 		first++;
 		console.log("goRight")
-    	$.get("/goRight",{vel}, function(data, status){
+    	$.get("/goRight", function(data, status){
     		console.log("goRight inviato con successo");
 		    //console.log("Data: " + data + "\nStatus: " + status);
 		    
     	});
 	}
 }
-function goBack(vel) {
+function goBack() {
 	if(first==0) {
 		first++;
 		console.log("goBack")
-    	$.get("/goBack", {vel},function(data, status){
+    	$.get("/goBack", function(data, status){
     		console.log("goBack inviato con successo");
 		    //console.log("Data: " + data + "\nStatus: " + status);
 		    
@@ -165,8 +164,7 @@ function goBack(vel) {
 	}	
 }
 function stopGo() {
-	vel=0;
-	$.get("/stopGo", {vel},function(data, status){
+	$.get("/stopGo", function(data, status){
 	    //console.log("Data: " + data + "\nStatus: " + status);
 	    first=0;
 	    console.log("stopGo inviato con successo");

@@ -9,39 +9,40 @@ const { exec } = require('child_process');
 
 routes.get('/', (req, res) => {
 //   res.status(200).json({ message: 'Connected!' });
-  res.sendFile('public/ex3-1.html',{root: __dirname});
+	res.sendFile('public/ex3-1.html',{root: __dirname});
 });
 routes.get('/go', (req, res) => {
-  res.status(200).json({ message: 'Go!' });
-  go("go");
+	res.status(200).json({ message: 'Go!' });
+	go("go",req.query);
 });
 routes.get('/stopGo', (req, res) => {
-  res.status(200).json({ message: 'stopGo!' });
-  go("stopGo");
+	res.status(200).json({ message: 'stopGo!' });
+	go("stopGo",req.query);
 });
 routes.get('/goBack', (req, res) => {
-  res.status(200).json({ message: 'goBack!' });
-  go("goBack");
+	res.status(200).json({ message: 'goBack!' });
+	go("goBack",req.query);
 });
-routes.get('/goLeft', (req, res) => {
-  res.status(200).json({ message: 'goLeft!' });
-  go("goLeft");
+routes.get('/goLeft',(req, res) => {
+	
+	res.status(200).json({ message: 'goLeft!' });
+	go("goLeft",req.query);
 });
 routes.get('/goRight', (req, res) => {
-  res.status(200).json({ message: 'goRight!' });
-  go("goRight");
+	res.status(200).json({ message: 'goRight!' });
+	go("goRight",req.query);
 });
 
 routes.get('/startStream', (req, res) => {
-  res.status(200).json({ message: 'streaming siiii!' });
-  streaming(true);
+	res.status(200).json({ message: 'streaming siiii!' });
+	streaming(true);
 });
 routes.get('/stopStream', (req, res) => {
-  res.status(200).json({ message: 'streaming noooo!' });
-  streaming(false);
+	res.status(200).json({ message: 'streaming noooo!' });
+	streaming(false);
 });
 routes.get('/getScreen', (req, res) => {
-  res.status(200).json({ message: 'screenshoooooot!' });
+	res.status(200).json({ message: 'screenshoooooot!' });
   //screenshot();
 });
 
@@ -65,7 +66,7 @@ routes.get('/getScreen', (req, res) => {
 }*/
 
 var python_process;
-function go(command) {
+function go(command,vel) {
 		if(command=="stopGo") {
 			//NON VIENE CHIAMATA LA STOP MOTORS, VIENE SOLO UCCISO IL PROCESSO
 			python_process.kill('SIGINT');	
@@ -73,7 +74,7 @@ function go(command) {
 		let options = {
   			mode: 'text',
   			pythonOptions: ['-u'], // get print results in real-time
-  			args: [command]
+  			args: [command,vel]
 		};
 	    var PythonShell = require('python-shell');
 	    var pyshell = new PythonShell('AMSpi/movements.py',options);

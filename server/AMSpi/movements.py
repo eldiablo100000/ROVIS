@@ -19,7 +19,7 @@ if __name__ == '__main__':
     with AMSpi() as amspi:
     	try:
 		c=sys.argv[1]
-		v=sys.argv[2]
+		v=int(sys.argv[2])
 		go_time=10
 		# Set PINs for controlling shift register (GPIO numbering)
 		amspi.set_74HC595_pins(21, 20, 16)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 			amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4], clockwise=False,speed=v)
 			time.sleep(go_time)
 	except KeyboardInterrupt:
-		print("ERRORE KEYBOARD")
+		print("KeyboardInterrupt")
 		#dovrebbe andare dentro al try in caso.
         #se si attiva questo if, non funzionano più le cose. SI accellera per qualche secodo e poi ci si ferma
         #if c=="stopGo":

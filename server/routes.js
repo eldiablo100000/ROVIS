@@ -13,24 +13,24 @@ routes.get('/', (req, res) => {
 });
 routes.get('/go', (req, res) => {
 	res.status(200).json({ message: 'Go!' });
-	go("go",req.query);
+	go("go",req.query.vel);
 });
 routes.get('/stopGo', (req, res) => {
 	res.status(200).json({ message: 'stopGo!' });
-	go("stopGo",req.query);
+	go("stopGo",req.query.vel);
 });
 routes.get('/goBack', (req, res) => {
 	res.status(200).json({ message: 'goBack!' });
-	go("goBack",req.query);
+	go("goBack",req.query.vel);
 });
 routes.get('/goLeft',(req, res) => {
 	
 	res.status(200).json({ message: 'goLeft!' });
-	go("goLeft",req.query);
+	go("goLeft",req.query.vel);
 });
 routes.get('/goRight', (req, res) => {
 	res.status(200).json({ message: 'goRight!' });
-	go("goRight",req.query);
+	go("goRight",req.query.vel);
 });
 
 routes.get('/startStream', (req, res) => {
@@ -79,7 +79,9 @@ function go(command,vel) {
 	    var PythonShell = require('python-shell');
 	    var pyshell = new PythonShell('AMSpi/movements.py',options);
 	    
-		
+		pyshell.on("message",function(message) {
+			console.log(message);
+		});
 	    pyshell.end(function (err) {
 	        if (err) {
 	            console.log(err);

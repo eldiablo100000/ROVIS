@@ -99,7 +99,7 @@ var streamServer = http.createServer( function(request, response) {
 
 app.use('/', routes);
 
-/*PythonShell.run('AMSpi/dc_example.py', null, function (err) {
+/*PythonShell.run('AMSpi/controllo_motori.py', null, function (err) {
   		if (err) throw err;
   			console.log('finished');
 	});*/

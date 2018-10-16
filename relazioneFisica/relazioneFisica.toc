@@ -1,0 +1,6 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {section}{\numberline {1}Introduzione}{3}
+\contentsline {section}{\numberline {2}Hardware}{3}
+\contentsline {section}{\numberline {3}Software}{3}
+\contentsline {section}{\numberline {4}Ulteriori sviluppi e Conclusioni}{3}

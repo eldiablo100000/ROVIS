@@ -1,3 +1,4 @@
+% !TeX spellcheck = it_IT 
 \documentclass[11pt]{article}
 \usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
@@ -8,6 +9,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{abbrevs}
+
 
 \input{style/settings.tex}
 
@@ -21,8 +23,38 @@
 	\tableofcontents
 	\newpage
 \section{Introduzione}
-\section{Hardware}
+L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote. Il dispositivo ottenuto è controllabile da un'interfaccia web ed è possibile visionare ciò che è posto di fronte al robot tramite una webcam.\\Nelle seguenti sezioni verranno descritti i componenti hardware utilizzati, le tecniche software utilizzate e verranno presentati eventuali sviluppi futuri.
+\section{Hardware} 
 \section{Software}
+Per garantire il controllo del dispositivo tramite un'interfaccia web è stato necessario progettare un server al quale un client può collegarsi per ottenere il controllo del dispositivo. È stato utilizzato il framework javascript \textit{NodeJs} per gestire sia la parte client che server dell'applicazione. Nelle seguenti sezioni verrà descritta la struttura gerarchica delle cartelle e le funzionalità presenti nei file al loro interno.
+\subsection{Server}
+I file presenti all'interno della cartella \textit{server} contengono le funzioni per gestire la parte server del sistema, mentre all'interno delle sue sottocartelle sono presenti altri file che verranno descritti in seguito.\\
+\subsubsection{main.js}
+Il file \textit{main.js} è il file principale del server. Al suo interno sono presenti le funzioni di inizializzazione del sistema e per la gestione dello streaming video.\\
+Per avviare il server è necessario digitare il seguente comando:
+\begin{lstinputlisting}[caption={Avvio server},basicstyle=\tiny]{codice/startServer}\end{lstinputlisting}
+\begin{itemize}
+	\item \textbf{node} nodejs;
+	\item \textbf{main.js} file del server;
+	\item \textbf{ciao} parola chiave; \todo{cambiare ciao}
+	\item \textbf{8081 8082 8083}  qualcosa \todo{scrivere}
+\end{itemize}
+Una volta lanciato il comando, sarà possibile accedere all'interfaccia web digitando l'indirizzo IP del raspberry seguito da \textit{:8083}.
+\begin{lstinputlisting}[caption={Esempio indirizzo server},basicstyle=\tiny]{codice/indirizzo}\end{lstinputlisting}
+\subsubsection{routes.js}
+Questo file è quello che gestisce la comunicazione client server, associando ad ogni interazione del client sulla pagina web una specifica azione del server. Gestisce quindi le funzioni che regolano la webcam e il movimento. In particolare viene utilizzata una libreria di nodejs per eseguire la libreria Python \textit{AMSpi} per la gestione dei motori.
+\subsubsection{AMSpi}
+\textit{AMSpi} è la libreria Python utilizzata per controllare i motori. Al suo interno è presente il file \textit{movements.py}. È il file che usa le funzioni della libreria per controllare i motori.
+\subsection{Client}
+I file presenti all'interno della cartella \textit{public} sono quelli che gestiscono la parte client dell'applicazione.\\
+\subsubsection{ex3-1.html} 
+\todo{immagine}
+È il file contenente la struttura del sito web.
+\subsubsection{css}
+All'interno di questa cartella sono presenti i file che regolano lo stile della pagina.
+\subsubsection{js}
+In questa cartella sono contenuti i file che regolano le interazioni dell'utente con la pagina e comunicano al server le azioni intraprese da esso.
+
 \section{Ulteriori sviluppi e Conclusioni}	
 %\newpage	
 %\bibliographystyle{abbrv}

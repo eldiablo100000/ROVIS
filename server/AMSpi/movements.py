@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-   Servo Example - Example of usage ASMpi class
-
-.. Licence MIT
-.. codeauthor:: Jan Lipovský <janlipovsky@gmail.com>, janlipovsky.cz
-"""
-
 from AMSpi import AMSpi
 import time
 import sys
@@ -25,21 +16,21 @@ if __name__ == '__main__':
 		amspi.set_74HC595_pins(21, 20, 16)
 		# Set PINs for controlling all 4 motors (GPIO numbering)
 		amspi.set_L293D_pins(5, 6, 13, 19)
-		if c=="go":
-			print("GO: clockwise")
+		if c=="forth":
+			print("BACKEND GO: clockwise")
 			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4],speed=v)
 			time.sleep(go_time)
-		if c=="goBack":
-			print("GO: counterclockwise")
+		if c=="back":
+			print("BACKEND GO: counterclockwise")
 			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4], clockwise=False,speed=v)
 			time.sleep(go_time)
-		if c=="goLeft":
-			print("Turn left")
+		if c=="left":
+			print("BACKEND GO: Turn left")
 			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3], clockwise=False,speed=v)
 			amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4],speed=v)
 			time.sleep(go_time)	
-		if c=="goRight":
-			print("Turn right")
+		if c=="right":
+			print("BACKEND GO: Turn right")
 			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3],speed=v)
 			amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4], clockwise=False,speed=v)
 			time.sleep(go_time)

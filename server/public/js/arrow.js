@@ -1,25 +1,35 @@
 var first=0;
-var VELOCITA=100; //FISSA PER IL MOMENTO
 $(document).ready(function(){
-	
-	//FUNZIONI PER IL CLICK DEI TASTI DA TESTARE. 
-	//NOTARE CHE SE SI PASSA IL MOUSE SOPRA UN TASTO SENZA AVER CLICCATO, PARTE COMUNQUE LA STOPGO
+	var velocity=$('#velocity')[0].value
+	$('#velocity').on("input change", function(){
+		$('#velocityValue')[0].value=$(this)[0].value
+		velocity=$(this)[0].value
+	})
+
+
 	$('button').on('mousedown', function(e) {
-    	//$(this).css("background","green");
     	switch($(this).attr("id")) {
-    	/*	case "keyboard_key_left":
-    			goLeft(VELOCITA);
+    		case "keyboard_key_left":
+    			$("#keyboard_key_left").css("background","green");
+	        	//console.log("left hw");
+    			startGo("left", velocity);
     			break;
     		case "keyboard_key_up":
-    			go(VELOCITA);
+    		$("#keyboard_key_up").css("background","green");
+	        	//console.log("up hw");
+    			startGo("forth", velocity);
     			break;
     		case "keyboard_key_right":
-    			goRight(VELOCITA);
+    		$("#keyboard_key_right").css("background","green");
+	        	//console.log("right hw");
+    			startGo("right", velocity);
     			break;
     		case "keyboard_key_down":
-    			goBack(VELOCITA);
+    			$("#keyboard_key_down").css("background","green");
+	        	//console.log("down hw");
+    			startGo("back", velocity);
     			break;
-    	*/	case "start":
+    		case "start":
     			startStreaming();
     			break;
     		case "stop":
@@ -29,14 +39,34 @@ $(document).ready(function(){
     			getScreenshot();
     			break;
     		default: 
-    			console.log("DEFAULT_KEY");
+    			//console.log("DEFAULT_KEY");
     			return;
     	}
-    	e.preventDefault(); 
-	}).on('mouseup mouseleave', function(e) {
-    	//$(this).css("background","white");
-    	//console.log("StopGo");
-    	//stopGo();
+    	//e.preventDefault(); 
+	})
+	$('button').on('mouseup', function(e) {
+    		switch($(this).attr("id")) {
+    		case "keyboard_key_left":
+    			$("#keyboard_key_left").css("background","white");
+	        	//console.log("stop left hw");
+	        	stopGo();
+    			break;
+    		case "keyboard_key_up":
+    		$("#keyboard_key_up").css("background","white");
+	        	//console.log("stop up hw");
+	        	stopGo();
+    			break;
+    		case "keyboard_key_right":
+    		$("#keyboard_key_right").css("background","white");
+	        	//console.log("stop right hw");
+	        	stopGo();
+    			break;
+    		case "keyboard_key_down":
+    			$("#keyboard_key_down").css("background","white");
+	        	//console.log("stop down hw");
+	        	stopGo();
+    			break;
+    	}
     	e.preventDefault(); 
 	});
 	
@@ -45,30 +75,30 @@ $(document).ready(function(){
 	    switch(e.which) {
 	        case 37: // left
 	        	$("#keyboard_key_left").css("background","green");
-	        	console.log("left");
-	        	goLeft(VELOCITA);
+	        	//console.log("left");
+	        	startGo("left", velocity);
 	        	break;
 
 	        case 38: // up
 	        	$("#keyboard_key_up").css("background","green");    	
-				console.log("up");
-				go(VELOCITA);
+				//console.log("up");
+				startGo("forth", velocity);
 	        	break;
 
 	        case 39: // right
 	        	$("#keyboard_key_right").css("background","green");
-	        	console.log("right");
-	        	goRight(VELOCITA);
+	        	//console.log("right");
+	        	startGo("right", velocity);
 	        	break;
 
 	        case 40: // down
 	        	$("#keyboard_key_down").css("background","green");
-	        	console.log("down");
-	        	goBack(VELOCITA);
+	        	//console.log("down");
+	        	startGo("back", velocity);
 	        	break;
 
 	        default: 
-	        	console.log("DEFAULT_ARROW");
+	        	//console.log("DEFAULT_ARROW");
 	        	return; // exit this handler for other keys
 	    }
 	    e.preventDefault(); // prevent the default action (scroll / move caret)
@@ -77,37 +107,36 @@ $(document).ready(function(){
 	    switch(e.which) {
 	        case 37: // left
 	        	$("#keyboard_key_left").css("background","white");
-	        	console.log("stopGoLeft");
+	        	//console.log("stopGoLeft");
 	        	stopGo();
 	        	break;
 
 	        case 38: // up
 	        	$("#keyboard_key_up").css("background","white");
-	        	console.log("stopGo");
+	        	//console.log("stopGo");
 	        	stopGo();
 	        	break;
 
 	        case 39: // right
 	        	$("#keyboard_key_right").css("background","white");
-	        	console.log("stopGoRight");
+	        	//console.log("stopGoRight");
 	        	stopGo();
 	        	break;
 
 	        case 40: // down
 	        	$("#keyboard_key_down").css("background","white");
-	        	console.log("stopGoBack");
+	        	//console.log("stopGoBack");
 	        	stopGo();
 	        	break;
 
 	        default: 
-	        	console.log("DEFAULT_ARROW");
+	        	//console.log("DEFAULT_ARROW");
 	        	return; // exit this handler for other keys
 	    }
 	    e.preventDefault(); // prevent the default action (scroll / move caret)
 	});
 
 });
-
 
 
 function sleep(milliseconds) {
@@ -120,73 +149,36 @@ function sleep(milliseconds) {
 }
 
 
-function goLeft(vel) {
+function startGo(direction, vel) {
 	if(first==0) {
 		first++;
-		console.log("goLeft")
-    	$.get("/goLeft", {vel}, function(data, status){
-    		console.log("goLeft inviato con successo");
-		    //console.log("Data: " + data + "\nStatus: " + status);
-		    
-    	});
+		
+		$.get("/startGo", {direction, vel}, function(data, status){
+			console.log("FRONTEND STARTGO -> direction "+direction + " vel "+vel);
+		});
+				
 	}
 }
-function go(vel) {
-	if(first==0) {
-		first++;
-		console.log("go")
-    	$.get("/go", {vel},function(data, status){
-    		console.log("go inviato con successo");
-		    //console.log("Data: " + data + "\nStatus: " + status);
-		    
-    	});
-	}
-}
-function goRight(vel) {
-	if(first==0) {
-		first++;
-		console.log("goRight")
-    	$.get("/goRight",{vel}, function(data, status){
-    		console.log("goRight inviato con successo");
-		    //console.log("Data: " + data + "\nStatus: " + status);
-		    
-    	});
-	}
-}
-function goBack(vel) {
-	if(first==0) {
-		first++;
-		console.log("goBack")
-    	$.get("/goBack", {vel},function(data, status){
-    		console.log("goBack inviato con successo");
-		    //console.log("Data: " + data + "\nStatus: " + status);
-		    
-    	});
-	}	
-}
+
 function stopGo() {
 	vel=0;
 	$.get("/stopGo", {vel},function(data, status){
-	    //console.log("Data: " + data + "\nStatus: " + status);
 	    first=0;
-	    console.log("stopGo inviato con successo");
+	    console.log("FRONTEND STOPGO -> vel "+vel);
    	});	
 }
 function startStreaming() {
 	$.get("/startStream", function(data, status){
-	    //console.log("Data: " + data + "\nStatus: " + status);
-	    console.log("startStream inviato con successo");
+	    console.log("FRONTEND STARTSTREAM");
    	});
 }
 function stopStreaming() {
 	$.get("/stopStream", function(data, status){
-	    //console.log("Data: " + data + "\nStatus: " + status);
-	    console.log("stopStream inviato con successo");
+	    console.log("FRONTEND STOPSTREAM");
    	});
 }
 function getScreenshot() {
 	$.get("/getScreen", function(data, status){
-	    //console.log("Data: " + data + "\nStatus: " + status);
-	    console.log("getScreen inviato con successo");
+	    console.log("FRONTEND SCREENSHOT");
    	});
 }

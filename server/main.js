@@ -11,30 +11,13 @@ var bodyParser = require('body-parser');
 var routes = require('./routes.js');
 var app = express();
 var PythonShell = require('python-shell');
- 
+require('dotenv').config()
+
 app.use("/public", express.static(__dirname + "/public"));
-if (process.argv.length < 3) {
-	console.log(
-		'Usage: \n' +
-		'node websocket-relay.js <secret> [<stream-port> <websocket-port> <html-port>]'
-	);
-	process.exit();
-}
-
-var STREAM_SECRET = process.argv[2],
-	STREAM_PORT = process.argv[3] || 8081,
-	WEBSOCKET_PORT = process.argv[4] || 8082,
-	HTML_PORT = process.argv[5] || 8083,
-	RECORD_STREAM = false;
-
-
-
-
-
 
 // Routes
 // Websocket Server
-var socketServer = new WebSocket.Server({port: WEBSOCKET_PORT, perMessageDeflate: false});
+var socketServer = new WebSocket.Server({port: process.env.WEBSOCKET_PORT, perMessageDeflate: false});
 socketServer.connectionCount = 0;
 socketServer.on('connection', function(socket, upgradeReq) {
 	socketServer.connectionCount++;
@@ -63,7 +46,7 @@ socketServer.broadcast = function(data) {
 var streamServer = http.createServer( function(request, response) {
 	var params = request.url.substr(1).split('/');
 
-	if (params[0] !== STREAM_SECRET) {
+	if (params[0] !== process.env.STREAM_SECRET) {
 		console.log(
 			'Failed Stream Connection: '+ request.socket.remoteAddress + ':' +
 			request.socket.remotePort + ' - wrong secret.'
@@ -91,11 +74,11 @@ var streamServer = http.createServer( function(request, response) {
 	});
 
 	// Record the stream to a local file?
-	if (RECORD_STREAM) {
+	if (process.env.RECORD_STREAM) {
 		var path = 'recordings/' + Date.now() + '.ts';
 		request.socket.recording = fs.createWriteStream(path);
 	}
-}).listen(STREAM_PORT);
+}).listen(process.env.STREAM_PORT);
 
 app.use('/', routes);
 
@@ -105,10 +88,10 @@ app.use('/', routes);
 	});*/
 
 // Turn on that server!
-app.listen(HTML_PORT, () => {
-console.log('App listening on port '+HTML_PORT);
+app.listen(process.env.HTML_PORT, () => {
+	console.log('App listening on port '+process.env.HTML_PORT);
 });
-console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');
-console.log('Awaiting WebSocket connections on ws://127.0.0.1:'+WEBSOCKET_PORT+'/');
-console.log('Listening for incomming HTTP-Requests on http://127.0.0.1:'+HTML_PORT+'/');
+console.log('Listening for incomming MPEG-TS Stream on http://'+process.env.ADDRESS+':'+process.env.STREAM_PORT+'/'+ process.env.STREAM_SECRET);
+console.log('Awaiting WebSocket connections on ws://'+process.env.ADDRESS+':'+process.env.WEBSOCKET_PORT+'/');
+console.log('Listening for incomming HTTP-Requests on http://'+process.env.ADDRESS+':'+process.env.HTML_PORT+'/');
 

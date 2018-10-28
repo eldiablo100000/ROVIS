@@ -3,8 +3,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>HTML5 Navigation Bar Example - Example 1</title>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <title>Raspirobot2</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
 </head>
 <body>
 <nav>
@@ -33,7 +33,7 @@
         <li>
             <a href="blog.html">Blog</a>
             <ul>
-                <li><a href="one.html">One</a></li>
+                <li><a href="/public/one.html">One</a></li>
                 <li><a href="two.html">Two</a></li>
                 <li><a href="three.html">Three</a></li>
             </ul>
@@ -85,6 +85,10 @@
  <button id="start" class="others" type="button">Start</button> 
  <button id="stop" class="others" type="button">Stop</button> 
  <button id="screenshot" class="others" type="button">Screenshot</button> 
+ <br><br>
+ <label for="velocity">Velocity</label>
+ <input id="velocity" type ="range" min ="0" max="100" step ="10" value ="100" /> 
+ <input id="velocityValue" type="text" disable value ="" maxlength="3" size="3">
     <div id="controls">
         <button id="keyboard_key_up"><img src="public/img/keyboard_key_up.png"/></button>
         <button id="keyboard_key_left" class="others"><img src="public/img/keyboard_key_left.png" /></button>
@@ -98,6 +102,5 @@
 <script type="text/javascript" src="public/js/jsmpeg.min.js"></script>
 <script type="text/javascript" src="public/js/canvas.js"></script>
 <script type="text/javascript" src="public/js/arrow.js"></script>
-
 </body>
 </html>

@@ -1,0 +1,16 @@
+//Inizializzazione path per frontend
+app.use("/public", express.static(__dirname + "/public"));
+
+//Istanziazione Stream Server
+var streamServer = http.createServer( function(request, response) {
+...
+})
+
+//Istanziazione WebSocket Server
+var socketServer = new WebSocket.Server({port: process.env.WEBSOCKET_PORT, perMessageDeflate: false});
+....
+
+//Istanziazione HTML Server
+app.listen(process.env.HTML_PORT, () => {
+	console.log('App listening on port '+process.env.HTML_PORT);
+});

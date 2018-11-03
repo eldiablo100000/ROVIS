@@ -1,0 +1,69 @@
+
+
+const routes = require('express').Router();
+const { exec } = require('child_process');
+
+routes.get('/', (req, res) => {
+        res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/index.html',{root: __dirname});
+});
+routes.get('/startGo', (req, res) => {
+	res.status(200).json({ message: 'startGo!' });
+	startGo(req.query.direction, req.query.vel);
+});
+
+routes.get('/stopGo', (req, res) => {
+	res.status(200).json({ message: 'stopGo!' });
+	stopGo("stopGo",req.query.vel);
+});
+
+routes.get('/startStream', (req, res) => {
+	res.status(200).json({ message: 'streaming yes!' });
+	streaming(true);
+});
+routes.get('/stopStream', (req, res) => {
+	res.status(200).json({ message: 'streaming no!' });
+	streaming(false);
+});
+routes.get('/getScreen', (req, res) => {
+	res.status(200).json({ message: 'screenshot!' });
+        screenshot();
+});
+
+
+
+var python_process;
+function stopGo(){
+	python_process.kill('SIGINT');	
+}
+function startGo(direction,vel) {
+	let options = {
+			mode: 'text',
+			pythonOptions: ['-u'], // get print results in real-time
+			args: [direction,vel]
+		};
+	    var PythonShell = require('python-shell');
+	    var pyshell = new PythonShell('AMSpi/movements.py',options);
+	    ...
+	    python_process = pyshell.childProcess;
+}
+function streaming(bool) {
+		console.log("ROUTES STREAMING -> start "+bool+" stop "+!bool)
+		if(bool){
+			url = 'http://'+process.env.ADDRESS+":"+process.env.STREAM_PORT+"/"+process.env.STREAM_SECRET
+			exec('ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 -f mpegts -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 '+url,(error, stdout, stderr) => {
+				...
+			});
+		}
+		else {
+			exec('pkill ffmpeg', (error, stdout, stderr) => {
+				...
+			});
+
+		}
+}
+function screenshot(bool) {
+	...
+}
+	   	
+

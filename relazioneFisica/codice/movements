@@ -1,0 +1,37 @@
+from AMSpi import AMSpi
+import time
+import sys
+
+if __name__ == '__main__':
+    # Calling AMSpi() we will use default pin numbering: BCM (use GPIO numbers)
+    # if you want to use BOARD numbering do this: "with AMSpi(True) as amspi:"
+    with AMSpi() as amspi:
+    	try:
+		c=sys.argv[1]
+		v=int(sys.argv[2])
+		go_time=10
+		# Set PINs for controlling shift register (GPIO numbering)
+		amspi.set_74HC595_pins(21, 20, 16)
+		# Set PINs for controlling all 4 motors (GPIO numbering)
+		amspi.set_L293D_pins(5, 6, 13, 19)
+		if c=="forth":
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4],speed=v)
+		if c=="back":
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4], clockwise=False,speed=v)
+		if c=="left":
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3], clockwise=False,speed=v)
+			amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4],speed=v)
+		if c=="right":
+			amspi.run_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_3],speed=v)
+			amspi.run_dc_motors([amspi.DC_Motor_2, amspi.DC_Motor_4], clockwise=False,speed=v)
+		time.sleep(go_time)
+	except KeyboardInterrupt:
+		print("KeyboardInterrupt")
+
+            
+            
+
+
+
+
+

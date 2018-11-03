@@ -9,12 +9,14 @@
 \contentsline {section}{\numberline {3}Realizzazione}{5}
 \contentsline {subsection}{\numberline {3.1}Hardware}{5}
 \contentsline {subsection}{\numberline {3.2}Software}{5}
-\contentsline {paragraph}{Server}{6}
-\contentsline {paragraph}{main.js}{6}
-\contentsline {paragraph}{routes.js}{6}
-\contentsline {paragraph}{AMSpi}{6}
-\contentsline {paragraph}{Client}{7}
-\contentsline {paragraph}{ex3-1.html}{7}
-\contentsline {paragraph}{css}{7}
-\contentsline {paragraph}{js}{7}
-\contentsline {section}{\numberline {4}Ulteriori sviluppi e Conclusioni}{7}
+\contentsline {paragraph}{Server}{7}
+\contentsline {paragraph}{.env}{7}
+\contentsline {paragraph}{main.js}{7}
+\contentsline {paragraph}{routes.js}{8}
+\contentsline {paragraph}{AMSpi}{9}
+\contentsline {paragraph}{AMSpi/movements.py}{9}
+\contentsline {paragraph}{Client}{10}
+\contentsline {paragraph}{index.html}{10}
+\contentsline {paragraph}{css}{10}
+\contentsline {paragraph}{js}{10}
+\contentsline {section}{\numberline {4}Ulteriori sviluppi e Conclusioni}{10}

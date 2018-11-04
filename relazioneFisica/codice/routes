@@ -7,6 +7,26 @@ routes.get('/', (req, res) => {
         res.status(200).json({ message: 'Connected!' });
 	res.sendFile('public/index.html',{root: __dirname});
 });
+
+
+
+routes.get('/', (req, res) => {
+//   res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/home.html',{root: __dirname});
+});
+routes.get('/rovis', (req, res) => {
+//   res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/home.html',{root: __dirname});
+});
+routes.get('/progetto', (req, res) => {
+//   res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/progetto.html',{root: __dirname});
+});
+routes.get('/linkutili', (req, res) => {
+//   res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/linkutili.html',{root: __dirname});
+});
+
 routes.get('/startGo', (req, res) => {
 	res.status(200).json({ message: 'startGo!' });
 	startGo(req.query.direction, req.query.vel);
@@ -63,7 +83,25 @@ function streaming(bool) {
 		}
 }
 function screenshot(bool) {
-	...
+		console.log("ROUTES SCREENSHOT")
+		exec('pkill ffmpeg', (error, stdout, stderr) => {
+		  if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		  }
+		  console.log(`stdout: ${stdout}`);
+		  console.log(`stderr: ${stderr}`);
+		});
+		path = "recordings/"
+		format="jpeg"
+		exec('ffmpeg -f v4l2 -i /dev/video0 -vframes 1 '+path+Date.now()+"."+format,(error, stdout, stderr) => {
+		  if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		  }
+		  console.log(`stdout: ${stdout}`);
+		  console.log(`stderr: ${stderr}`);
+		});
 }
 	   	
 

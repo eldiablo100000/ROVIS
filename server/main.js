@@ -16,7 +16,6 @@ var serveIndex = require('serve-index');
 require('dotenv').config()
 app.use("/public", express.static(__dirname + "/public"));
 
-//app.use('/recordings', serveIndex(__dirname + '/recordings'));
 app.use('/recordings', express.static(__dirname + '/recordings'), serveIndex('recordings', {'icons': true}))
 
 // Routes

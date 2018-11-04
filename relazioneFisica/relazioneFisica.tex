@@ -178,9 +178,29 @@ Script scritto da noi che sfrutta la libreria. Inizialmente setta i pin GPIO d'a
 \end{lstinputlisting}
 \paragraph{Client side}
 I file presenti all'interno della cartella \underline{\textbf{\textit{public/}}} sono quelli che gestiscono la parte client dell'applicazione.\\
-\subparagraph{index.html} 
-\todo{immagine}
-È il file contenente la struttura HTML del sito web.
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/page-rovis.png}
+		\caption{http://127.0.0.1:8083/rovis\\È la pagina che contiene il controller e il video player.}
+		\label{fig:page-rovis}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/page-proj.png}
+		\caption{http://127.0.0.1:8083/progetto\\È la pagina che contiene questo report.}
+		\label{fig:page-project}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/page-link.png}
+		\caption{http://127.0.0.1:8083/linkutili\\È la pagina che contiene alcuni link utili e i contatti.}
+		\label{fig:page-link}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/page-rec.png}
+		\caption{http://127.0.0.1:8083/recordings\\	È la pagina che contiene gli screenshot e i video (se lanciato in modalità \textit{RECORD\_STREAM} nel file \textit{.env}).}
+		\label{fig:page-recordings}
+	\end{subfigure}
+\end{figure}
 \subparagraph{\underline{css/}}
 All'interno di questa cartella sono presenti i file che regolano lo stile della pagina.
 \subparagraph{\underline{js/}}

@@ -1,2 +1,6 @@
 server/node_modules/
-server/recordings/*
+relazioneFisica/*.aux
+relazioneFisica/*.log
+relazioneFisica/*.tex
+relazioneFisica/*.toc
+relazioneFisica/*.gz

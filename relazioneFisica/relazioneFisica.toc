@@ -18,10 +18,9 @@
 \contentsline {subparagraph}{\relax $\@@underline {\hbox {AMSpi/}}\mathsurround \z@ $\relax }{10}
 \contentsline {subparagraph}{AMSpi/movements.py}{10}
 \contentsline {paragraph}{Client side}{11}
-\contentsline {subparagraph}{index.html}{11}
 \contentsline {subparagraph}{\relax $\@@underline {\hbox {css/}}\mathsurround \z@ $\relax }{11}
 \contentsline {subparagraph}{\relax $\@@underline {\hbox {js/}}\mathsurround \z@ $\relax }{11}
 \contentsline {subparagraph}{js/arrow.js}{11}
-\contentsline {subparagraph}{js/canvas.js}{13}
-\contentsline {subparagraph}{js/jsmpeg.min.js}{13}
-\contentsline {section}{\numberline {4}Conclusioni e Sviluppi futuri}{13}
+\contentsline {subparagraph}{js/canvas.js}{14}
+\contentsline {subparagraph}{js/jsmpeg.min.js}{14}
+\contentsline {section}{\numberline {4}Conclusioni e Sviluppi futuri}{14}

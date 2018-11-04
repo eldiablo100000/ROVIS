@@ -1,5 +1,6 @@
-//Inizializzazione path per frontend
+//Inizializzazione path per frontend e recordings
 app.use("/public", express.static(__dirname + "/public"));
+app.use('/recordings', express.static(__dirname + '/recordings'), serveIndex('recordings', {'icons': true}))
 
 //Istanziazione Stream Server
 var streamServer = http.createServer( function(request, response) {

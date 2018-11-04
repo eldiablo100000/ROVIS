@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ROVIS</title>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+</head>
+<body>
+<nav>
+    <ul>
+        <li>
+            <a href="/rovis">ROVIS Controller</a>
+        </li>
+        <li>
+            <a href="/progetto">Il Progetto</a>
+        </li>
+        <li>
+            <a href="/linkutili">Link utili</a>
+        </li>
+        <li>
+			<a href="/chisiamo">Chi siamo</a>
+		</li>
+    </ul>
+</nav>
+<div id="video-container">
+    <canvas id="video-canvas"></canvas>
+</div>
+
+<div id="controls-container">
+ <button id="start" class="others" type="button">Start</button> 
+ <button id="stop" class="others" type="button">Stop</button> 
+ <button id="screenshot" class="others" type="button">Screenshot</button> 
+ <br><br>
+ <label for="velocity">Velocity</label>
+ <input id="velocity" type ="range" min ="0" max="100" step ="10" value ="100" /> 
+ <input id="velocityValue" type="text" disable value ="" maxlength="3" size="3">
+    <div id="controls">
+        <button id="keyboard_key_up"><img src="public/img/keyboard_key_up.png"/></button>
+        <button id="keyboard_key_left" class="others"><img src="public/img/keyboard_key_left.png" /></button>
+        <button id="keyboard_key_down" class="others"><img src="public/img/keyboard_key_down.png" /></button>
+        <button id="keyboard_key_right" class="others"><img src="public/img/keyboard_key_right.png" /></button>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/jsmpeg.min.js"></script>
+<script type="text/javascript" src="public/js/canvas.js"></script>
+<script type="text/javascript" src="public/js/arrow.js"></script>
+</body>
+</html>

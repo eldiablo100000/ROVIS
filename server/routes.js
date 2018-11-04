@@ -9,10 +9,23 @@ const { exec } = require('child_process');
 
 routes.get('/', (req, res) => {
 //   res.status(200).json({ message: 'Connected!' });
-	res.sendFile('public/index.html',{root: __dirname});
+	res.sendFile('public/home.html',{root: __dirname});
 });
+routes.get('/rovis', (req, res) => {
+//   res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/home.html',{root: __dirname});
+});
+routes.get('/progetto', (req, res) => {
+//   res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/progetto.html',{root: __dirname});
+});
+routes.get('/linkutili', (req, res) => {
+//   res.status(200).json({ message: 'Connected!' });
+	res.sendFile('public/linkutili.html',{root: __dirname});
+});
+
 routes.get('/startGo', (req, res) => {
-	res.status(200).json({ message: 'goForth!' });
+	res.status(200).json({ message: 'startGo!' });
 	startGo(req.query.direction, req.query.vel);
 });
 
@@ -22,16 +35,19 @@ routes.get('/stopGo', (req, res) => {
 });
 
 routes.get('/startStream', (req, res) => {
-	res.status(200).json({ message: 'streaming siiii!' });
+	res.status(200).json({ message: 'streaming si!' });
 	streaming(true);
 });
 routes.get('/stopStream', (req, res) => {
-	res.status(200).json({ message: 'streaming noooo!' });
+	res.status(200).json({ message: 'streaming no!' });
 	streaming(false);
 });
 routes.get('/getScreen', (req, res) => {
-	res.status(200).json({ message: 'screenshoooooot!' });
-  //screenshot();
+	res.status(200).json({ message: 'screenshoot!' });
+	screenshot();
+});
+routes.get('/recordings', (req, res) => {
+	res.sendFile('recordings/',{root: __dirname});
 });
 
 
@@ -89,6 +105,29 @@ function streaming(bool) {
 
 		}
 }
+function screenshot() {
+		console.log("ROUTES SCREENSHOT")
+
+		exec('pkill ffmpeg', (error, stdout, stderr) => {
+		  if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		  }
+		  console.log(`stdout: ${stdout}`);
+		  console.log(`stderr: ${stderr}`);
+		});
+		path = "recordings/"
+		format="jpeg"
+		exec('ffmpeg -f v4l2 -i /dev/video0 -vframes 1 '+path+Date.now()+"."+format,(error, stdout, stderr) => {
+		  if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		  }
+		  console.log(`stdout: ${stdout}`);
+		  console.log(`stderr: ${stderr}`);
+		});
+	
+	}
 	   	
 //IMPORTANTE, STARE ATTENTI A NON CANCELLARE
 module.exports = routes;

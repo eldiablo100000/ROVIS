@@ -1,5 +1,5 @@
-\babel@toc {italian}{}
-\babel@toc {italian}{}
+\select@language {italian}
+\select@language {italian}
 \contentsline {section}{\numberline {1}Introduzione}{3}
 \contentsline {section}{\numberline {2}Progettazione}{3}
 \contentsline {subsection}{\numberline {2.1}Specifica}{3}
@@ -22,4 +22,4 @@
 \contentsline {subparagraph}{js/arrow.js}{10}
 \contentsline {subparagraph}{js/canvas.js}{12}
 \contentsline {subparagraph}{js/jsmpeg.min.js}{12}
-\contentsline {section}{\numberline {4}Ulteriori sviluppi e Conclusioni}{12}
+\contentsline {section}{\numberline {4}Conclusioni e Sviluppi futuri}{12}

@@ -86,7 +86,6 @@ nav ul > li.sub li.sub{
     display: block;
     height: 50vh;
     max-height: 60% ;
-    background: yellow;
 }
 
 #video-canvas {
@@ -98,8 +97,6 @@ nav ul > li.sub li.sub{
 #controls-container {
     display: block;
     height: 40vh;
-    background: red;
-
 }
 
 #controls {

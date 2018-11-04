@@ -24,12 +24,13 @@
 	\tableofcontents
 	\newpage
 \section{Introduzione}
-L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote e trasmettere un canale di \textit{streaming video over HTTP}. Il dispositivo ottenuto è controllabile da un'interfaccia web ed è possibile visionare ciò che è posto di fronte al robot tramite una webcam.\\Nelle seguenti sezioni verranno descritte le fasi di progettazione e realizzazione, i componenti hardware e le tecniche software utilizzate, e verranno presentati eventuali sviluppi futuri.
+L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote e trasmettere un canale di \textit{streaming video over HTTP}. Il dispositivo ottenuto è controllabile da un'interfaccia web ed è possibile visionare ciò che è posto di fronte al robot tramite una webcam.\\
+Nelle seguenti sezioni verranno descritte le fasi di progettazione e realizzazione, i componenti hardware e le tecniche software utilizzate, e verranno presentati eventuali sviluppi futuri.
 \section{Progettazione}
 La fase di progettazione è stata condotta attraverso l'analisa della specifica e lo studio di progetti open-source precedenti.
 \subsection{Specifica}
 Progettare e realizzare un robot, controllabile attraverso un'interfaccia Web, dotato di una webcam in modo da poter trasmettere lo streaming video sulla stessa interfaccia.\\
-Inoltre, si richiede l'uso microcontrollore o di un single-board computer, di componenti low-cost e software open-source.
+Inoltre, si richiede l'uso di un microcontrollore o di un single-board computer, di componenti low-cost e software open-source.
 \subsection{Analisi dei requisiti}
 \paragraph{Hardware}
 Ciò che serve per realizzare ROVIS:
@@ -45,7 +46,7 @@ Si è deciso di utilizzare un power bank per il RaspberryPi per il semplice moti
 
 \end{itemize}
 
-\begin{figure}[htp]
+\begin{figure}[h!]
 				\centering
 		\begin{subfigure}[b]{0.6\textwidth}
 
@@ -53,7 +54,6 @@ Si è deciso di utilizzare un power bank per il RaspberryPi per il semplice moti
 		\caption{RaspberryPi, case per batterie, 4 motori continui e L293D drive shield}
 		\label{fig:components}
 	\end{subfigure}
-\\
 	%
 	\begin{subfigure}[b]{0.4\textwidth}
 		
@@ -84,28 +84,27 @@ Ciò che serve per realizzare ROVIS:
 	\item \underline{HTTP Server}\\
 		Lanciato da NodeJS, di default resta in ascolto sulla porta 808, è il componente che serve l'interfaccia web per il controllo di ROVIS, e su cui viene proiettato lo streaming video. Il video è ottenuto dal WebSocket Server e riprodotto in un canvas HTML5.
 \end{itemize}
-\begin{figure}[htp]
+\begin{figure}[h!]
 	\centering
-	\begin{subfigure}[b]{0.6\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/api1.png}
-		\caption{Caso d'uso 1: \textbf{\textit{stop streaming}}}
+		\caption{Caso d'uso 1: \textbf{\textit{start streaming}}}
 		\label{fig:usecase1}
 	\end{subfigure}
-	\\
 	%
-	\begin{subfigure}[b]{0.6\textwidth}	
+	\begin{subfigure}[b]{0.4\textwidth}	
 		\includegraphics[width=\textwidth]{images/api2.png}
 		\caption{Caso d'uso 2: \textbf{\textit{stop streaming}}}
 		\label{fig:usecase2}
 	\end{subfigure}
 	%
-	\begin{subfigure}[b]{0.6\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/api3.png}
 		\caption{Caso d'uso 3: \textbf{\textit{start go}}}
 		\label{fig:usecase3}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.6\textwidth}
-	
+	%
+	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/api4.png}
 		\caption{Caso d'uso 4: \textbf{\textit{stop go}}}
 		\label{fig:usecase4}

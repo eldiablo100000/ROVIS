@@ -8,18 +8,20 @@
 \contentsline {paragraph}{Software}{5}
 \contentsline {section}{\numberline {3}Realizzazione}{5}
 \contentsline {subsection}{\numberline {3.1}Hardware}{5}
-\contentsline {subsection}{\numberline {3.2}Software}{5}
+\contentsline {paragraph}{Raspberry e driver}{5}
+\contentsline {paragraph}{Assemblaggio}{5}
+\contentsline {subsection}{\numberline {3.2}Software}{7}
 \contentsline {paragraph}{Server side}{7}
-\contentsline {subparagraph}{.env}{7}
-\contentsline {subparagraph}{main.js}{7}
-\contentsline {subparagraph}{routes.js}{8}
-\contentsline {subparagraph}{\relax $\@@underline {\hbox {AMSpi/}}\mathsurround \z@ $\relax }{9}
-\contentsline {subparagraph}{AMSpi/movements.py}{9}
-\contentsline {paragraph}{Client side}{10}
-\contentsline {subparagraph}{index.html}{10}
-\contentsline {subparagraph}{\relax $\@@underline {\hbox {css/}}\mathsurround \z@ $\relax }{10}
-\contentsline {subparagraph}{\relax $\@@underline {\hbox {js/}}\mathsurround \z@ $\relax }{10}
-\contentsline {subparagraph}{js/arrow.js}{10}
-\contentsline {subparagraph}{js/canvas.js}{12}
-\contentsline {subparagraph}{js/jsmpeg.min.js}{12}
-\contentsline {section}{\numberline {4}Ulteriori sviluppi e Conclusioni}{12}
+\contentsline {subparagraph}{.env}{9}
+\contentsline {subparagraph}{main.js}{9}
+\contentsline {subparagraph}{routes.js}{9}
+\contentsline {subparagraph}{\relax $\@@underline {\hbox {AMSpi/}}\mathsurround \z@ $\relax }{11}
+\contentsline {subparagraph}{AMSpi/movements.py}{11}
+\contentsline {paragraph}{Client side}{11}
+\contentsline {subparagraph}{index.html}{11}
+\contentsline {subparagraph}{\relax $\@@underline {\hbox {css/}}\mathsurround \z@ $\relax }{11}
+\contentsline {subparagraph}{\relax $\@@underline {\hbox {js/}}\mathsurround \z@ $\relax }{11}
+\contentsline {subparagraph}{js/arrow.js}{11}
+\contentsline {subparagraph}{js/canvas.js}{13}
+\contentsline {subparagraph}{js/jsmpeg.min.js}{13}
+\contentsline {section}{\numberline {4}Conclusioni e Sviluppi futuri}{14}

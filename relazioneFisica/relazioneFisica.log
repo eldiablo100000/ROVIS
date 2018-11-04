@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.2)  4 NOV 2018 16:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.2)  4 NOV 2018 20:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -960,65 +960,92 @@ File: images/api4.png Graphic file (type png)
 Package pdftex.def Info: images/api4.png  used on input line 109.
 (pdftex.def)             Requested size: 239.00557pt x 85.08128pt.
 
+Overfull \hbox (45.38205pt too wide) in paragraph at lines 118--118
+[][]\T1/cmr/m/n/9 https://camo.githubusercontent.com/77d2a42518f0202d0962bdf243
+1a417d0248f2e5/687474703a2f2f6a616e 
+ []
+
+<images/schemaROVIS.jpeg, id=40, 1101.11375pt x 711.65875pt>
+File: images/schemaROVIS.jpeg Graphic file (type jpg)
+<use images/schemaROVIS.jpeg>
+Package pdftex.def Info: images/schemaROVIS.jpeg  used on input line 120.
+(pdftex.def)             Requested size: 398.33858pt x 257.44574pt.
+<images/rovis-front.png, id=41, 1794.705pt x 2951.025pt>
+File: images/rovis-front.png Graphic file (type png)
+<use images/rovis-front.png>
+Package pdftex.def Info: images/rovis-front.png  used on input line 128.
+(pdftex.def)             Requested size: 199.16928pt x 327.45058pt.
+<images/rovis-profile.png, id=42, 3890.535pt x 2135.98pt>
+File: images/rovis-profile.png Graphic file (type png)
+<use images/rovis-profile.png>
+Package pdftex.def Info: images/rovis-profile.png  used on input line 135.
+(pdftex.def)             Requested size: 199.16928pt x 109.34746pt.
+<images/rovis-top.png, id=43, 4123.405pt x 2071.74pt>
+File: images/rovis-top.png Graphic file (type png)
+<use images/rovis-top.png>
+Package pdftex.def Info: images/rovis-top.png  used on input line 141.
+(pdftex.def)             Requested size: 199.16928pt x 100.0525pt.
 [5] [6 <./images/api1.png (PNG copy)> <./images/api2.png (PNG copy)> <./images/
 api3.png (PNG copy)> <./images/api4.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 
  []
 
-(./codice/env)
-Underfull \hbox (badness 10000) in paragraph at lines 128--131
+[7 <./images/schemaROVIS.jpeg>] [8 <./images/rovis-front.png> <./images/rovis-p
+rofile.png> <./images/rovis-top.png>] (./codice/env)
+Underfull \hbox (badness 10000) in paragraph at lines 158--161
 
  []
 
-(./codice/main) [7] (./codice/startServer) (./codice/indirizzo)
-(./codice/routes [8]
+(./codice/main) (./codice/startServer) (./codice/indirizzo) [9]
+(./codice/routes
 Overfull \hbox (2.0894pt too wide) in paragraph at lines 53--54
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][]  
  []
 
-)
+) [10]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 145.
+(Font)              <10.95> on input line 175.
  (./codice/movements)
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
-[9] (./codice/arrow [10] [11]) [12] (./relazioneFisica.aux)
+(./codice/arrow [11] [12]) [13] [14] (./relazioneFisica.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 16664 strings out of 494912
- 308245 string characters out of 6180266
- 434797 words of memory out of 5000000
- 19619 multiletter control sequences out of 15000+600000
- 20211 words of font info for 45 fonts, out of 8000000 for 9000
+ 16694 strings out of 494912
+ 308900 string characters out of 6180266
+ 437797 words of memory out of 5000000
+ 19643 multiletter control sequences out of 15000+600000
+ 20900 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  62i,9n,92p,804b,1674s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk
-> </home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1000.600pk>
- </home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> 
-</home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <
-/home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </
-home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </h
-ome/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </ho
-me/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </hom
-e/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home
-/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/
-nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/n
-at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/na
-t/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/nat
-/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on relazioneFisica.pdf (12 pages, 1083584 bytes).
+> </home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk>
+ </home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1000.600pk> 
+</home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> <
+/home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </
+home/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </h
+ome/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </ho
+me/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </hom
+e/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home
+/nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/
+nat/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/n
+at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/na
+t/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/nat
+/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/nat/
+.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+Output written on relazioneFisica.pdf (14 pages, 23660110 bytes).
 PDF statistics:
- 560 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 605 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

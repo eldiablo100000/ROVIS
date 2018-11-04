@@ -113,6 +113,36 @@ Ciò che serve per realizzare ROVIS:
 \end{figure}
 \section{Realizzazione}
 \subsection{Hardware} 
+\paragraph{Raspberry e driver}
+Lo schema per inizializzare il driver (L293D) in modo che comunichi con il RaspberryPi (poichè la shield è creata per una scheda Arduino-like) e per settare i pin di shift e di controllo è quello trovato nella documentazione della libreria AMSpy.\footnote{https://github.com/lipoja/AMSpi/}\\
+Link allo schema.\footnote{https://camo.githubusercontent.com/77d2a42518f0202d0962bdf2431a417d0248f2e5/687474703a2f2f6a616e\\6c69706f76736b792e637a2f776972696e6731322e6a7067}
+	\begin{figure}[htp]
+		\includegraphics[width=\textwidth]{images/schemaROVIS.jpeg}
+		\caption{Schema di connessione tra \textit{driver} e \textit{Raspberry}. }
+		\label{fig:schema-driver}
+	\end{figure}
+\paragraph{Assemblaggio}
+\begin{figure}[htp]
+	\centering
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{images/rovis-front.png}
+		\caption{ROVIS - Vista frontale}
+		\label{fig:rovis-front}
+	\end{subfigure}
+	\\
+	%
+	\begin{subfigure}[b]{0.5\textwidth}	
+		\includegraphics[width=\textwidth]{images/rovis-profile.png}
+		\caption{ROVIS - Vista laterale}
+		\label{fig:rovis-profile}
+	\end{subfigure}
+	%
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{images/rovis-top.png}
+		\caption{ROVIS - Vista dall'alto}
+		\label{fig:rovis-top}
+	\end{subfigure}
+\end{figure}
 \subsection{Software}
 Per garantire il controllo del dispositivo tramite un'interfaccia web è stato necessario progettare un server al quale un client può collegarsi. È stato utilizzato il framework JavaScript \textit{NodeJs} per gestire sia la parte client che server dell'applicazione.\\
 Inoltre si è dovuto ospitare del Python all'interno del progetto con la libreria AMSpy\footnote{https://github.com/lipoja/AMSpi}, il quale ci ha permesso di controllare la driver shield L293D (Attraverso la libreria Python RPi.GPIO per Raspberry) e ci ha fornito le primitive per inizializzare e settare la shield e interfacciarsi con i motori, cosa che sarebbe stata ben più complessa se avessimo dovuto reimplementare il tutto da zero in JavaScript.
@@ -165,7 +195,15 @@ Fetching dell'elemento \textit{video-canvas} sull'HTML, e dell'indirizzo del web
 \subparagraph{js/jsmpeg.min.js}
 Libreria JavaScript importata staticamente\footnote{https://github.com/phoboslab/jsmpeg}, offre la possibilità di istanziare e utilizzare Video player, con relativi decoder (MPEG-TS, MPEG-1)  e renderers (WebGL, Canvas2D).
 
-\section{Ulteriori sviluppi e Conclusioni}	
+\section{Conclusioni e Sviluppi futuri}
+L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote e trasmettere un canale di \textit{streaming video over HTTP}. Il robot ROVIS è stato realizzato coerentemente alla specifica.\\
+Il dispositivo ROVIS potrebbero essere ulteriormente migliorato implementando le seguenti funzionalità:
+\begin{itemize}
+	\item Installazione di un modulo con sensori ad ultrasuoni con il fine di evitare lo scontro di ROVIS con ostacoli;
+	\item Creazione un'applicazione Android per gestire il dispositivo;
+	\item Configurazione del sistema al fine di consentire un accesso alla pagina di gestione da remoto.
+\end{itemize}
+
 %\newpage	
 %\bibliographystyle{abbrv}
 %\bibliography{Bib}

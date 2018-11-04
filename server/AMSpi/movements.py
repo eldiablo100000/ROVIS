@@ -37,7 +37,7 @@ if __name__ == '__main__':
 	except KeyboardInterrupt:
 		print("KeyboardInterrupt")
 		#dovrebbe andare dentro al try in caso.
-        #se si attiva questo if, non funzionano più le cose. SI accellera per qualche secodo e poi ci si ferma
+        #se si attiva questo if, non funzionano piu' le cose. SI accellera per qualche secodo e poi ci si ferma
         #if c=="stopGo":
         	#print("Stop")
         	#amspi.stop_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2, amspi.DC_Motor_3, amspi.DC_Motor_4])

@@ -74,7 +74,7 @@ var streamServer = http.createServer( function(request, response) {
 	});
 
 	// Record the stream to a local file?
-	if (process.env.RECORD_STREAM) {
+	if (process.env.RECORD_STREAM != 0) {
 		var path = 'recordings/' + Date.now() + '.ts';
 		request.socket.recording = fs.createWriteStream(path);
 	}

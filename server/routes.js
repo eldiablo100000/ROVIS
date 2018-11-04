@@ -66,7 +66,7 @@ function startGo(direction,vel) {
 function streaming(bool) {
 		console.log("ROUTES STREAMING -> start "+bool+" stop "+!bool)
 		if(bool){
-			url = 'http://'+process.env.ADDRESS+":"+process.env.STREAM_PORT+"/"+process.env.STREAM_SECRET
+			url = "http://localhost:"+process.env.STREAM_PORT+"/"+process.env.STREAM_SECRET
 			exec('ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 -f mpegts -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 '+url,(error, stdout, stderr) => {
 			  if (error) {
 			    console.error(`exec error: ${error}`);

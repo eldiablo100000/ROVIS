@@ -117,14 +117,14 @@ Ciò che serve per realizzare ROVIS:
 Per garantire il controllo del dispositivo tramite un'interfaccia web è stato necessario progettare un server al quale un client può collegarsi. È stato utilizzato il framework JavaScript \textit{NodeJs} per gestire sia la parte client che server dell'applicazione.\\
 Inoltre si è dovuto ospitare del Python all'interno del progetto con la libreria AMSpy\footnote{https://github.com/lipoja/AMSpi}, il quale ci ha permesso di controllare la driver shield L293D (Attraverso la libreria Python RPi.GPIO per Raspberry) e ci ha fornito le primitive per inizializzare e settare la shield e interfacciarsi con i motori, cosa che sarebbe stata ben più complessa se avessimo dovuto reimplementare il tutto da zero in JavaScript.
  Nelle seguenti sezioni verrà descritta la struttura gerarchica delle cartelle e le funzionalità presenti nei file al loro interno.
-\paragraph{Server}
-I file presenti all'interno della cartella \textit{server} contengono le funzioni per gestire la parte server del sistema, mentre all'interno delle sue sottocartelle sono presenti altri file che verranno descritti in seguito.\\
-\paragraph{.env}
+\paragraph{Server side}
+I file presenti all'interno della cartella \underline{\textbf{\textit{server /}}} contengono le funzioni per gestire la parte server del sistema, mentre all'interno delle sue sottocartelle sono presenti altri file che verranno descritti in seguito.\\
+\subparagraph{.env}
 Questo file nascosto, processato da NodeJS, permette di definire le variabili d'ambiente per tutto il progetto. All'interno sono definite le porte di default per i server, il \textit{secret} utilizzato per costruire le richieste, l'indirizzo IP e l'opzione di registrazione. Ovviamente per cambiare \textit{secret}/porte/IP/opzioni basta modificare tale file e rilanciare il progetto.
 \begin{lstinputlisting}
 	[caption={File .env},basicstyle=\tiny]{codice/env}
 \end{lstinputlisting}
-\paragraph{main.js}
+\subparagraph{main.js}
 Il file \textit{main.js} è il file principale del server. Al suo interno sono presenti le funzioni di inizializzazione del sistema e per la gestione dello streaming video.\\
 Qui vengono istanziati i 3 server discussi nel paragrafo 2.2/Software e, inoltre, è definito il percorso da cui servire i files per il frontend.\\
 \begin{lstinputlisting}
@@ -137,25 +137,33 @@ Per avviare il server è necessario digitare il seguente comando:
 Una volta lanciato il comando, sarà possibile accedere all'interfaccia web digitando l'indirizzo IP del Raspberry seguito dalla porta su cui gira l'HTML server (default 8083).
 \begin{lstinputlisting}[caption={Esempio indirizzo server},basicstyle=\tiny]{codice/indirizzo}
 \end{lstinputlisting}
-\paragraph{routes.js}
+\subparagraph{routes.js}
 Questo file è quello che definisce le API, cioè gestisce la comunicazione client-server, associando ad ogni interazione del client sulla pagina web una specifica azione del server. Gestisce quindi le funzioni che regolano la webcam e il movimento. In particolare viene utilizzata la libreria di NodeJS \textit{python-shell}\footnote{https://www.npmjs.com/package/python-shell} per eseguire uno script Python prodotto da noi (\textit{movements.py}) per la gestione dei motori.
 \begin{lstinputlisting}[caption={routes.js},basicstyle=\tiny]{codice/routes}
 \end{lstinputlisting}
-\paragraph{AMSpi}
+\subparagraph{\underline{AMSpi/}}
 \textit{AMSpi} è la libreria Python utilizzata per controllare i motori. 
-\paragraph{AMSpi/movements.py}
+\subparagraph{AMSpi/movements.py}
 Script scritto da noi che sfrutta la libreria. Inizialmente setta i pin GPIO d'appoggio per i ponti H e i 4 pin per controllare ogni motore. In seguito triggera le azioni di \textit{start} e \textit{stop} dei motori, in base alla direzione e alla velocità passata come input.
 \begin{lstinputlisting}[caption={AMSpy/movements.py},basicstyle=\tiny]{codice/movements}
 \end{lstinputlisting}
-\paragraph{Client}
-I file presenti all'interno della cartella \textit{public} sono quelli che gestiscono la parte client dell'applicazione.\\
-\paragraph{index.html} 
+\paragraph{Client side}
+I file presenti all'interno della cartella \underline{\textbf{\textit{public/}}} sono quelli che gestiscono la parte client dell'applicazione.\\
+\subparagraph{index.html} 
 \todo{immagine}
-È il file contenente la struttura del sito web.
-\paragraph{css}
+È il file contenente la struttura HTML del sito web.
+\subparagraph{\underline{css/}}
 All'interno di questa cartella sono presenti i file che regolano lo stile della pagina.
-\paragraph{js}
+\subparagraph{\underline{js/}}
 In questa cartella sono contenuti i file che regolano le interazioni dell'utente con la pagina e comunicano al server le azioni intraprese da esso.
+\subparagraph{js/arrow.js}
+Binding fra eventi sulla pagina web (click con il mouse/ click su tastiera) e azioni (richieste HTTP Get) dal browser dell'utente al server.
+\begin{lstinputlisting}[caption={js/arrow.js},basicstyle=\tiny]{codice/arrow}
+\end{lstinputlisting}
+\subparagraph{js/canvas.js}
+Fetching dell'elemento \textit{video-canvas} sull'HTML, e dell'indirizzo del web socket server, per istanziare un oggetto di tipo JSMPEG Player (Il componente che riproduce il video su browser).
+\subparagraph{js/jsmpeg.min.js}
+Libreria JavaScript importata staticamente\footnote{https://github.com/phoboslab/jsmpeg}, offre la possibilità di istanziare e utilizzare Video player, con relativi decoder (MPEG-TS, MPEG-1)  e renderers (WebGL, Canvas2D).
 
 \section{Ulteriori sviluppi e Conclusioni}	
 %\newpage	

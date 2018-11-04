@@ -1,0 +1,146 @@
+var first=0;
+$(document).ready(function(){
+
+	//Settaggio e deinizione listener per slider con velocita'
+	var velocity=$('#velocity')[0].value
+	$('#velocity').on("input change", function(){
+		$('#velocityValue')[0].value=$(this)[0].value
+		velocity=$(this)[0].value
+	})
+
+	//Listener sui bottoni della pagina web, al click del mouse
+	$('button').on('mousedown', function(e) {
+	    	switch($(this).attr("id")) {
+	    		case "keyboard_key_left":
+	    			$("#keyboard_key_left").css("background","green");
+		        	//console.log("left hw");
+	    			startGo("left", velocity);
+	    			break;
+	
+	    		case "keyboard_key_up":
+	    			...
+	
+	    		case "keyboard_key_right":
+	    			...
+	
+	    		case "keyboard_key_down":
+	    			...
+	
+	    		case "start":
+	    			startStreaming();
+	    			break;
+	
+	    		case "stop":
+	    			stopStreaming();
+	    			break;
+	
+	    		case "screenshot":
+	    			getScreenshot();
+	    			break;
+	
+	    		default: 
+	    			return;
+	    	}
+    		//e.preventDefault(); 
+	})
+
+	//Listener sui bottoni della pagina web, al rilascio del mouse
+	$('button').on('mouseup', function(e) {
+    		switch($(this).attr("id")) {
+	    		case "keyboard_key_left":
+	    			$("#keyboard_key_left").css("background","white");
+		        	stopGo();
+	    			break;
+	    		case "keyboard_key_up":
+	    			...
+	    		case "keyboard_key_right":
+	    			...
+	    		case "keyboard_key_down":
+	    			...
+    		}
+    		e.preventDefault(); 
+	});
+	
+	//Listener sugli eventi della tastiera, al click di un tasto
+	$(document).keydown(function(e) {
+	    switch(e.which) {
+	        case 37: // left
+	        	$("#keyboard_key_left").css("background","green");
+	        	//console.log("left");
+	        	startGo("left", velocity);
+	        	break;
+
+
+	        case 38: // up
+			...
+
+	        case 39: // right
+			...
+
+	        case 40: // down
+       			...
+
+	    }
+	    e.preventDefault(); // prevent the default action (scroll / move caret)
+	});
+
+	//Listener sugli eventi della tastiera, al rilascio di un tasto
+	$(document).keyup(function(e) {
+	    switch(e.which) {
+	        case 37: // left
+	        	$("#keyboard_key_left").css("background","white");
+	        	stopGo();
+	        	break;
+
+	        case 38: // up
+			...
+
+	        case 39: // right
+			...
+
+	        case 40: // down
+       			...
+
+	    }
+	    e.preventDefault(); // prevent the default action (scroll / move caret)
+	});
+
+});
+
+}
+
+
+function startGo(direction, vel) {
+	if(first==0) {
+		first++;
+		
+		$.get("/startGo", {direction, vel}, function(data, status){
+			console.log("FRONTEND STARTGO -> direction "+direction + " vel "+vel);
+		});
+				
+	}
+}
+
+//Chiamate alle API del server
+function stopGo() {
+	vel=0;
+	$.get("/stopGo", {vel},function(data, status){
+	    first=0;
+	    console.log("FRONTEND STOPGO -> vel "+vel);
+   	});	
+}
+function startStreaming() {
+	$.get("/startStream", function(data, status){
+	    console.log("FRONTEND STARTSTREAM");
+   	});
+}
+function stopStreaming() {
+	$.get("/stopStream", function(data, status){
+	    console.log("FRONTEND STOPSTREAM");
+   	});
+}
+function getScreenshot() {
+	$.get("/getScreen", function(data, status){
+	    console.log("FRONTEND SCREENSHOT");
+   	});
+}

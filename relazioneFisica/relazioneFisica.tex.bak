@@ -27,7 +27,7 @@
 L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote e trasmettere uno \textit{streaming video over HTTP}. Il dispositivo ottenuto è controllabile da un'interfaccia web ed è possibile visionare ciò che è posto di fronte al robot tramite una webcam.\\
 Nelle seguenti sezioni verranno descritte le fasi di progettazione e realizzazione, i componenti hardware e le tecniche software utilizzate, e verranno presentati eventuali sviluppi futuri.
 \section{Progettazione}
-La fase di progettazione è stata condotta attraverso l'analisi della specifica e lo studio di progetti open-source precedenti.
+La fase di progettazione è stata condotta attraverso l'analisa della specifica e lo studio di progetti open-source precedenti.
 \subsection{Specifica}
 Progettare e realizzare un robot, controllabile attraverso un'interfaccia Web, dotato di una webcam in modo da poter trasmettere lo streaming video sulla stessa interfaccia.\\
 Inoltre, si richiede l'uso di un microcontrollore o di un single-board computer, di componenti low-cost e software open-source.
@@ -113,7 +113,7 @@ Ciò che serve per realizzare ROVIS:
 \section{Realizzazione}
 \subsection{Hardware} 
 \paragraph{Raspberry e driver}
-Lo schema per inizializzare il driver (L293D) in modo che comunichi con il RaspberryPi (poiché la shield è creata per una scheda Arduino-like) e per settare i pin di shift e di controllo è quello trovato nella documentazione della libreria AMSpy.\footnote{https://github.com/lipoja/AMSpi/}\\
+Lo schema per inizializzare il driver (L293D) in modo che comunichi con il RaspberryPi (poichè la shield è creata per una scheda Arduino-like) e per settare i pin di shift e di controllo è quello trovato nella documentazione della libreria AMSpy.\footnote{https://github.com/lipoja/AMSpi/}\\
 Link allo schema.\footnote{https://camo.githubusercontent.com/77d2a42518f0202d0962bdf2431a417d0248f2e5/687474703a2f2f6a616e\\6c69706f76736b792e637a2f776972696e6731322e6a7067}
 	\begin{figure}[htp]
 		\includegraphics[width=\textwidth]{images/schemaROVIS.jpeg}

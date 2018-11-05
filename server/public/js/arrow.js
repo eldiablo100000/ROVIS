@@ -2,8 +2,8 @@ var first=0;
 $(document).ready(function(){
 	var velocity=$('#velocity')[0].value
 	$('#velocity').on("input change", function(){
-		$('#velocityValue')[0].value=$(this)[0].value
-		velocity=$(this)[0].value
+		$('#velocityValue').text($(this)[0].value);
+		velocity=$(this)[0].value;
 	})
 
 

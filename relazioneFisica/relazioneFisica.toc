@@ -5,22 +5,22 @@
 \contentsline {subsection}{\numberline {2.1}Specifica}{3}
 \contentsline {subsection}{\numberline {2.2}Analisi dei requisiti}{3}
 \contentsline {paragraph}{Hardware}{3}
-\contentsline {paragraph}{Software}{5}
-\contentsline {section}{\numberline {3}Realizzazione}{6}
-\contentsline {subsection}{\numberline {3.1}Hardware}{6}
-\contentsline {paragraph}{Raspberry e driver}{6}
+\contentsline {paragraph}{Software}{4}
+\contentsline {section}{\numberline {3}Realizzazione}{5}
+\contentsline {subsection}{\numberline {3.1}Hardware}{5}
+\contentsline {paragraph}{Raspberry e driver}{5}
 \contentsline {paragraph}{Assemblaggio}{6}
-\contentsline {subsection}{\numberline {3.2}Software}{6}
+\contentsline {subsection}{\numberline {3.2}Software}{8}
 \contentsline {paragraph}{Server side}{8}
 \contentsline {subparagraph}{.env}{8}
 \contentsline {subparagraph}{main.js}{8}
 \contentsline {subparagraph}{routes.js}{9}
-\contentsline {subparagraph}{\relax $\@@underline {\hbox {AMSpi/}}\mathsurround \z@ $\relax }{10}
-\contentsline {subparagraph}{AMSpi/movements.py}{10}
+\contentsline {subparagraph}{\relax $\@@underline {\hbox {AMSpi/}}\mathsurround \z@ $\relax }{11}
+\contentsline {subparagraph}{AMSpi/movements.py}{11}
 \contentsline {paragraph}{Client side}{11}
-\contentsline {subparagraph}{\relax $\@@underline {\hbox {css/}}\mathsurround \z@ $\relax }{11}
-\contentsline {subparagraph}{\relax $\@@underline {\hbox {js/}}\mathsurround \z@ $\relax }{11}
-\contentsline {subparagraph}{js/arrow.js}{11}
-\contentsline {subparagraph}{js/canvas.js}{14}
-\contentsline {subparagraph}{js/jsmpeg.min.js}{14}
-\contentsline {section}{\numberline {4}Conclusioni e Sviluppi futuri}{14}
+\contentsline {subparagraph}{\relax $\@@underline {\hbox {css/}}\mathsurround \z@ $\relax }{13}
+\contentsline {subparagraph}{\relax $\@@underline {\hbox {js/}}\mathsurround \z@ $\relax }{13}
+\contentsline {subparagraph}{js/arrow.js}{13}
+\contentsline {subparagraph}{js/canvas.js}{15}
+\contentsline {subparagraph}{js/jsmpeg.min.js}{15}
+\contentsline {section}{\numberline {4}Conclusioni e Sviluppi futuri}{15}

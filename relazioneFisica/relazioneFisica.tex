@@ -24,7 +24,7 @@
 	\tableofcontents
 	\newpage
 \section{Introduzione}
-L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote e trasmettere un canale di \textit{streaming video over HTTP}. Il dispositivo ottenuto è controllabile da un'interfaccia web ed è possibile visionare ciò che è posto di fronte al robot tramite una webcam.\\
+L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote e trasmettere uno \textit{streaming video over HTTP}. Il dispositivo ottenuto è controllabile da un'interfaccia web ed è possibile visionare ciò che è posto di fronte al robot tramite una webcam.\\
 Nelle seguenti sezioni verranno descritte le fasi di progettazione e realizzazione, i componenti hardware e le tecniche software utilizzate, e verranno presentati eventuali sviluppi futuri.
 \section{Progettazione}
 La fase di progettazione è stata condotta attraverso l'analisa della specifica e lo studio di progetti open-source precedenti.
@@ -38,11 +38,11 @@ Ciò che serve per realizzare ROVIS:
 \item \underline{Microcontrollore / Single-board computer}\\
 Si è deciso di utilizzare un RaspberryPi 3 model B\footnote{https://www.raspberrypi.org/products/raspberry-pi-3-model-b/}, che presenta nativamente una scheda di rete wireless, sebbene vada bene un qualsiasi Raspberry dotato di scheda di rete (interna o esterna) e porta USB per la webcam.
 \item \underline{Una "carrozzeria" con tutti gli alloggi necessari e 4 motori continui}\\
-Per semplicità si è deciso di acquistare un \textit{case}\footnote{https://www.diymore.cc/collections/robot-chassis/products/diymore-4-wheel-robot-chassis-smart-car-with-speed-and-tacho-encoder-for-arduino-raspberry-pi-robot-diy-kits-65x26mm-tire} che comprendesse già i motori fissati, evitando di incorrere in ulteriori future complicazioni con l'asseblaggio e messa in asse delle ruote, del moto, ecc...\\
+Per semplicità si è deciso di acquistare un \textit{case}\footnote{https://www.diymore.cc/collections/robot-chassis/products/diymore-4-wheel-robot-chassis-smart-car-with-speed-and-tacho-encoder-for-arduino-raspberry-pi-robot-diy-kits-65x26mm-tire} che comprendesse già i motori fissati, evitando di incorrere in ulteriori future complicazioni con l'assemblaggio, la messa in asse delle ruote, ecc...\\
 \item \underline{Una scheda che faccia da driver per i motori}\\
-Acquistata su Amazon.it\footnote{http://amzn.eu/d/a9PD82e}, una shield con dei chip L293D\footnote{https://www.robot-italy.com/it/l293d-motor-driver.html} (driver per motori molto comuni), permette di collegare i motori e gestirne la direzione (moto orario/antiorario)  e la velocità, ottebibili grazie allo sfruttamento di alcuni pin GPio d'appoggio per il controllo singolo di ogni motore ai e ponti H per permettere i cambi di direzione. Va alimentato con 5V.
+Acquistata su Amazon.it\footnote{http://amzn.eu/d/a9PD82e}, una shield con dei chip L293D\footnote{https://www.robot-italy.com/it/l293d-motor-driver.html} (driver per motori molto comuni), permette di collegare i motori e gestirne la direzione (moto orario/antiorario)  e la velocità, ottenibili grazie allo sfruttamento di alcuni pin GPIO d'appoggio per il controllo singolo di ogni motore e ai ponti H per permettere i cambi di direzione. Va alimentato con 5V.
 \item \underline{Un Power-bank e un alloggiamento\\ per per shield e motori} \\
-Si è deciso di utilizzare un power bank per il RaspberryPi per il semplice motivo che è più comodo, a nostro avviso, servire l'alimentazione da una porta micro USB invece che saldare un ulteriore alloggiamento per batterie sul RaspberryPi (Ma andrebbe comunque un'alimentazione uguale a quella per i motori e la shield, cioè 4* batterie AAA quindi 4.8-5V).
+Si è deciso di utilizzare un power bank per il RaspberryPi per il semplice motivo che è più comodo, a nostro avviso, servire l'alimentazione da una porta micro USB invece che saldare un ulteriore alloggiamento per batterie sul RaspberryPi (Ma andrebbe bene comunque un'alimentazione uguale a quella per i motori e la shield, cioè 4* batterie AAA quindi 4.8-5V).
 
 \end{itemize}
 
@@ -82,7 +82,7 @@ Ciò che serve per realizzare ROVIS:
 	\item \underline{Web Socket Server}\\
 		Lanciato da NodeJS, di default resta in ascolto sulla porta 8082, è il server che aspetta una richiesta websocket da parte dello Stream Server.
 	\item \underline{HTTP Server}\\
-		Lanciato da NodeJS, di default resta in ascolto sulla porta 808, è il componente che serve l'interfaccia web per il controllo di ROVIS, e su cui viene proiettato lo streaming video. Il video è ottenuto dal WebSocket Server e riprodotto in un canvas HTML5.
+		Lanciato da NodeJS, di default resta in ascolto sulla porta 8083, è il componente che serve l'interfaccia web per il controllo di ROVIS, e su cui viene proiettato lo streaming video. Il video è ottenuto dal WebSocket Server e riprodotto in un canvas HTML5.
 \end{itemize}
 \begin{figure}[h!]
 	\centering
@@ -178,29 +178,30 @@ Script scritto da noi che sfrutta la libreria. Inizialmente setta i pin GPIO d'a
 \end{lstinputlisting}
 \paragraph{Client side}
 I file presenti all'interno della cartella \underline{\textbf{\textit{public/}}} sono quelli che gestiscono la parte client dell'applicazione.\\
-\begin{figure}[h!]
+\begin{figure}[htp]
 	\centering
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{images/page-rovis.png}
 		\caption{http://127.0.0.1:8083/rovis\\È la pagina che contiene il controller e il video player.}
 		\label{fig:page-rovis}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{images/page-proj.png}
 		\caption{http://127.0.0.1:8083/progetto\\È la pagina che contiene questo report.}
 		\label{fig:page-project}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{images/page-link.png}
 		\caption{http://127.0.0.1:8083/linkutili\\È la pagina che contiene alcuni link utili e i contatti.}
 		\label{fig:page-link}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{images/page-rec.png}
 		\caption{http://127.0.0.1:8083/recordings\\	È la pagina che contiene gli screenshot e i video (se lanciato in modalità \textit{RECORD\_STREAM} nel file \textit{.env}).}
 		\label{fig:page-recordings}
 	\end{subfigure}
 \end{figure}
+\newpage
 \subparagraph{\underline{css/}}
 All'interno di questa cartella sono presenti i file che regolano lo stile della pagina.
 \subparagraph{\underline{js/}}
@@ -216,7 +217,7 @@ Libreria JavaScript importata staticamente\footnote{https://github.com/phoboslab
 
 \section{Conclusioni e Sviluppi futuri}
 L'obiettivo del presente lavoro è stato quello di costruire un robot capace di muoversi su ruote e trasmettere un canale di \textit{streaming video over HTTP}. Il robot ROVIS è stato realizzato coerentemente alla specifica.\\
-Il dispositivo ROVIS potrebbero essere ulteriormente migliorato implementando le seguenti funzionalità:
+Il dispositivo ROVIS potrebbe essere ulteriormente migliorato implementando, ad esempio, le seguenti funzionalità:
 \begin{itemize}
 	\item Installazione di un modulo con sensori ad ultrasuoni con il fine di evitare lo scontro di ROVIS con ostacoli;
 	\item Creazione un'applicazione Android per gestire il dispositivo;

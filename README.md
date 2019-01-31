@@ -1,6 +1,7 @@
 # ROver for VIdeo Streaming
 
-A little robot to record and stream videos with a RaspberryPi
+A little controllable robot to record and stream videos over HTTP with a RaspberryPi.
+This is our Physics project for the University. 
 
 ### Prerequisites
 You need NodeJS and npm

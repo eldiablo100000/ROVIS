@@ -22,3 +22,6 @@ npm install
 ```
 npm start
 ```
+# Authors
+Natale Vadalà - @eldiablo100000
+Alessandro Cordella - @alessandrocordella

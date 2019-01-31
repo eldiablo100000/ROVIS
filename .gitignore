@@ -1,6 +1,1 @@
-server/node_modules/
-relazioneFisica/*.aux
-relazioneFisica/*.log
-relazioneFisica/*.tex
-relazioneFisica/*.toc
-relazioneFisica/*.gz
+node_modules/

@@ -13,7 +13,6 @@ sudo apt-get install npm
 ```
 git clone https://bitbucket.org/eldiablo100000/raspirobot.git
 cd rovis/
-cd server/
 npm install
 ```
 

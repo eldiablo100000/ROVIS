@@ -12,7 +12,7 @@ sudo apt-get install npm
 ### Installing
 ```
 git clone https://bitbucket.org/eldiablo100000/raspirobot.git
-cd raspirobot/
+cd rovis/
 cd server/
 npm install
 ```
